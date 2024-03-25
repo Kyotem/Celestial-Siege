@@ -10,7 +10,7 @@ public class CelestialSiege extends YaegerGame {
     @Override
     public void setupGame() {
         setGameTitle("Celestial Siege");
-        setSize(new Size(800, 600));
+        setSize(new Size(700, 700));
     }
 
     @Override
