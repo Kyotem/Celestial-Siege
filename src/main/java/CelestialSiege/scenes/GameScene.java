@@ -20,7 +20,7 @@ public class GameScene extends DynamicScene {
     @Override
     public void setupEntities() {
         Spaceship spaceship = new Spaceship(new Coordinate2D(399, 550));
-        Alien alien = new Alien(new Coordinate2D(500, 500));
+        Alien alien = new Alien(new Coordinate2D(500, 150));
         addEntity(alien);
         addEntity(spaceship);
     }
