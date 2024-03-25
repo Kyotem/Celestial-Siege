@@ -18,7 +18,7 @@ public class Alien extends DynamicSpriteEntity implements SceneBorderTouchingWat
 
 
     private Direction currentDirection;
-    private int alienSpeed = 5;
+    private int alienSpeed = 0;
     // Will change based on speed of main Alienclass
 
     public Alien(Coordinate2D initialLocation) {
