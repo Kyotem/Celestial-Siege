@@ -12,14 +12,19 @@ public class Alien extends DynamicSpriteEntity {
     AlienManager alienManager;
     // Use on later date for handling arraylist access
     private int alienHP;
+    private int scorePoints;
 
     // Will change based on speed of main Alienclass
 
-    public Alien(String sprite, Coordinate2D initialLocation, int alienHP, AlienManager alienManager) {
+    public Alien(String sprite, Coordinate2D initialLocation, int alienHP, int scorePoints, AlienManager alienManager) {
         super(sprite, initialLocation, new Size(40, 40));
         this.alienHP = alienHP;
+        this.scorePoints = scorePoints;
         this.alienManager = alienManager;
 
     }
+
+
+
 
 }

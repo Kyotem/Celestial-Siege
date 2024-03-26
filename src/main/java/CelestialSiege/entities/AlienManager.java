@@ -40,6 +40,10 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
 
     }
 
+
+
+
+
     private void changeDirection() {
         if (currentDirection == Direction.LEFT) {
             setCurrentDirection(Direction.RIGHT);
