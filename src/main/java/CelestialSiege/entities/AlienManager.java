@@ -70,9 +70,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         moveAliensDown();
     }
 
-    public void removeAlien(Alien alien) {
-        aliens.remove(alien); // Remove the alien from the list
-    }
+
 
 
     // All types of aliens are initialised below this section
@@ -131,6 +129,10 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     private void addAlien(Alien alien) {
         aliens.add(alien);
         addEntity(alien);
+    }
+
+    public void removeAlien(Alien alien) {
+        aliens.remove(alien); // Remove the alien from the list
     }
 
 }

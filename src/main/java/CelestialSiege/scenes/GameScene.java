@@ -9,13 +9,14 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 
 
-
 public class GameScene extends DynamicScene implements TileMapContainer {
 
     private CelestialSiege celestialSiege;
+
     public GameScene(CelestialSiege celestialSiege) {
         this.celestialSiege = celestialSiege;
     }
+
     @Override
     public void setupScene() {
         setBackgroundAudio("audio/Audio1.mp3");

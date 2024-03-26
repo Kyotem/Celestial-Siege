@@ -5,16 +5,14 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
-import com.github.hanyaeger.api.userinput.KeyListener;
-import javafx.scene.input.KeyCode;
 
 import java.util.List;
-import java.util.Set;
 
 // TODO
-//  Implement score as separate variable
+//  Parse Score through to Scoreborad class
+//  add loss condition (aliens pass certain y point)
 
-public class Alien extends DynamicSpriteEntity implements Collided, KeyListener {
+public class Alien extends DynamicSpriteEntity implements Collided {
 
     AlienManager alienManager;
     // Use on later date for handling arraylist access
@@ -41,15 +39,13 @@ public class Alien extends DynamicSpriteEntity implements Collided, KeyListener 
                 '}';
     }
 
-
-
     private void destroyAndGrantScore() {
 
         alienManager.removeAlien(this);
         remove();
+        // Removes the entity from the AlienManager's list & currentscene
 
-        // add score to scoreboard
-
+        // TODO add func to send score to scoreboard
     }
 
     private void decreaseHP() {
@@ -66,6 +62,6 @@ public class Alien extends DynamicSpriteEntity implements Collided, KeyListener 
         if (shouldDelete()) {
             destroyAndGrantScore();
         }
-        // Implement another func to check if it should be deleted
+        // Decreases HP, then checks if it's under 0 to see if it should be deleted, then the function grants the score.
     }
 }
