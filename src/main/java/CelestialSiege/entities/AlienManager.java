@@ -1,6 +1,7 @@
 package CelestialSiege.entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
@@ -11,10 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class AlienManager extends DynamicCompositeEntity implements SceneBorderTouchingWatcher, KeyListener {
+public class AlienManager extends DynamicCompositeEntity implements SceneBorderTouchingWatcher {
 
     private final int TOTAL_COLUMNS = 11;
     private final int STEP_SIZE = 50;
+
+    private int alienSpeed = 2;
+    Direction currentDirection = Direction.RIGHT;
 
     private List<Alien> aliens;
 
@@ -22,6 +26,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     public AlienManager(Coordinate2D initialLocation) {
         super(initialLocation);
         aliens = new ArrayList<>();
+
     }
 
     @Override
@@ -30,6 +35,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         setupStrongAliens();
         setupStandardAliens();
         setupWeakAliens();
+        setMotion(2, currentDirection);
 
     }
 
@@ -38,7 +44,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         for (int column = 0; column < TOTAL_COLUMNS; column++) {
             Alien alien = new Alien(
                     "sprites/aliens/Alien1_Placeholder.png",
-                    new Coordinate2D((50 + column * STEP_SIZE), START_Y_STRONG),
+                    new Coordinate2D((column * STEP_SIZE), START_Y_STRONG),
                     3,
                     this
             );
@@ -52,7 +58,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         int START_Y_STANDARD = 100;
         for (int row = 0; row < 2; row++) {
             for (int column = 0; column < TOTAL_COLUMNS; column++) {
-                int x = 50 + column * STEP_SIZE; // Calculate the x coordinate
+                int x = column * STEP_SIZE; // Calculate the x coordinate
                 int y = START_Y_STANDARD + row * STEP_SIZE; // Calculate the y coordinate
                 Alien alien = new Alien(
                         "sprites/aliens/Alien2_Placeholder.png",
@@ -70,7 +76,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         int START_Y_WEAK = 200;
         for (int row = 0; row < 2; row++) {
             for (int column = 0; column < TOTAL_COLUMNS; column++) {
-                int x = 50 + column * STEP_SIZE; // Calculate the x coordinate
+                int x = column * STEP_SIZE; // Calculate the x coordinate
                 int y = START_Y_WEAK + row * STEP_SIZE; // Calculate the y coordinate
                 Alien alien = new Alien(
                         "sprites/aliens/Alien3_Placeholder.png",
@@ -93,20 +99,29 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     public void adjustAlienSpeed(int speed) {
         for(Alien  a : aliens) {
             a.setAlienSpeed(speed);
-            a.moveAlien();
+            a.moveAlien(currentDirection);
         }
     }
 
 
-    public void onPressedKeysChange(Set<KeyCode> set) {
-        if(set.contains(KeyCode.ESCAPE)) {
-            adjustAlienSpeed(2);
-        }
-    } // Used for debugging TODO Remove this function
-
-
     public void handleAlienCollision(Alien alien) {
         System.out.println("Alien hit the wall");
+        changeDirection();
+
+    }
+
+
+    private void changeDirection() {
+        if (currentDirection == Direction.LEFT) {
+            setCurrentDirection(Direction.RIGHT);
+        } else if (currentDirection == Direction.RIGHT) {
+            setCurrentDirection(Direction.LEFT);
+        }
+        setMotion(alienSpeed, currentDirection);
+    }
+
+    void setCurrentDirection(Direction newDirection) {
+        currentDirection = newDirection;
     }
 
 
