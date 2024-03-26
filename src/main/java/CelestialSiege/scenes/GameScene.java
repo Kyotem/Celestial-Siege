@@ -6,8 +6,8 @@ import CelestialSiege.entities.Spaceship;
 import CelestialSiege.entities.map.ShieldTileMap;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
-import com.github.hanyaeger.api.scenes.TileMap;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
+
 
 
 public class GameScene extends DynamicScene implements TileMapContainer {
@@ -35,4 +35,6 @@ public class GameScene extends DynamicScene implements TileMapContainer {
 
         addTileMap(new ShieldTileMap());
     }
+
+
 }

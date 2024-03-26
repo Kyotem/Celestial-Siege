@@ -5,13 +5,16 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
+import com.github.hanyaeger.api.userinput.KeyListener;
+import javafx.scene.input.KeyCode;
 
 import java.util.List;
+import java.util.Set;
 
 // TODO
 //  Implement score as separate variable
 
-public class Alien extends DynamicSpriteEntity implements Collided {
+public class Alien extends DynamicSpriteEntity implements Collided, KeyListener {
 
     AlienManager alienManager;
     // Use on later date for handling arraylist access
@@ -38,16 +41,19 @@ public class Alien extends DynamicSpriteEntity implements Collided {
                 '}';
     }
 
-    private void decreaseHP() {
-        alienHP--;
-    }
+
 
     private void destroyAndGrantScore() {
 
         alienManager.removeAlien(this);
+        remove();
 
         // add score to scoreboard
 
+    }
+
+    private void decreaseHP() {
+        alienHP--;
     }
 
     private boolean shouldDelete() {
@@ -57,7 +63,7 @@ public class Alien extends DynamicSpriteEntity implements Collided {
     @Override
     public void onCollision(List<Collider> list) {
         decreaseHP();
-        if(shouldDelete()) {
+        if (shouldDelete()) {
             destroyAndGrantScore();
         }
         // Implement another func to check if it should be deleted
