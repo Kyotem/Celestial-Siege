@@ -4,16 +4,16 @@ import CelestialSiege.CelestialSiege;
 import com.github.hanyaeger.api.Coordinate2D;
 import javafx.scene.input.MouseButton;
 
-public class StartButton extends Button {
+public class ExitButton extends Button {
     private CelestialSiege celestialSiege;
 
-    public StartButton(Coordinate2D initialLocation, CelestialSiege celestialSiege) {
-        super(initialLocation, "Start Spel");
+    public ExitButton(Coordinate2D initialLocation, CelestialSiege celestialSiege) {
+        super(initialLocation, "Spel Verlaten");
         this.celestialSiege = celestialSiege;
     }
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        celestialSiege.setActiveScene(1);
+        celestialSiege.quit();
     }
 }
