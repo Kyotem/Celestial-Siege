@@ -16,15 +16,20 @@ public class Alien extends DynamicSpriteEntity {
 
     // Will change based on speed of main Alienclass
 
-    public Alien(String sprite, Coordinate2D initialLocation, int alienHP, int scorePoints, AlienManager alienManager) {
+    public Alien(String sprite, Coordinate2D initialLocation, int alienHP, AlienManager alienManager) {
         super(sprite, initialLocation, new Size(40, 40));
         this.alienHP = alienHP;
-        this.scorePoints = scorePoints;
+        scorePoints = alienHP * 100;
         this.alienManager = alienManager;
-
     }
 
-
-
-
+// TODO Remove toString debug func
+    @Override
+    public String toString() {
+        return "Alien{" +
+                "alienManager=" + alienManager +
+                ", alienHP=" + alienHP +
+                ", scorePoints=" + scorePoints +
+                '}';
+    }
 }
