@@ -2,17 +2,12 @@ package CelestialSiege.entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
-//TODO:
-//  Implement moveDown
-//  Implement different Aliens (Make use of multiple constructors?)
-//  Create spawner for respective aliens
+// TODO
+//  Implement score as separate variable
 
-;
-
-public class Alien extends DynamicSpriteEntity  {
+public class Alien extends DynamicSpriteEntity {
 
     AlienManager alienManager;
     // Use on later date for handling arraylist access
