@@ -1,16 +1,11 @@
 package CelestialSiege.scenes;
 
 import CelestialSiege.CelestialSiege;
-import CelestialSiege.entities.Alien;
 import CelestialSiege.entities.AlienManager;
 import CelestialSiege.entities.Spaceship;
-import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
-import com.github.hanyaeger.api.userinput.KeyListener;
-import javafx.scene.input.KeyCode;
 
-import java.util.Set;
 
 public class GameScene extends DynamicScene {
     private CelestialSiege celestialSiege;
