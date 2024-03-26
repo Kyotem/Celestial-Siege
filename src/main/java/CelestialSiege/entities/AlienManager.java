@@ -5,20 +5,17 @@ import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import com.github.hanyaeger.api.userinput.KeyListener;
-import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class AlienManager extends DynamicCompositeEntity implements SceneBorderTouchingWatcher {
 
     private final int TOTAL_COLUMNS = 11;
     private final int STEP_SIZE = 50;
-
-    private int alienSpeed = 2;
+    private int alienSpeed = 8;
     Direction currentDirection = Direction.RIGHT;
+
 
     private List<Alien> aliens;
 
@@ -35,8 +32,36 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         setupStrongAliens();
         setupStandardAliens();
         setupWeakAliens();
-        setMotion(2, currentDirection);
+        setMotion(alienSpeed, currentDirection);
 
+    }
+
+    private void changeDirection() {
+        if (currentDirection == Direction.LEFT) {
+            setCurrentDirection(Direction.RIGHT);
+        } else if (currentDirection == Direction.RIGHT) {
+            setCurrentDirection(Direction.LEFT);
+        };
+        setMotion(alienSpeed, currentDirection);
+    }
+
+
+    public void setCurrentDirection(Direction newDirection) {
+        currentDirection = newDirection;
+    }
+    public void moveAliensDown(double stepSize) {
+        // Calc new Y Coord based on StepSize.
+        double newY = getAnchorLocation().getY() + stepSize;
+        // Make new anchor location based on the current X pos and new Y pos
+        Coordinate2D newAnchorLocation = new Coordinate2D(getAnchorLocation().getX(), newY);
+        // Apply new pos to current AnchorLocation
+        setAnchorLocation(newAnchorLocation);
+    }
+
+    @Override
+    public void notifyBoundaryTouching(SceneBorder sceneBorder) {
+        changeDirection();
+        moveAliensDown(5);
     }
 
     private void setupStrongAliens() {
@@ -90,43 +115,9 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     }
     // Used to set up all enemies with an HP value of 1
 
-
     private void addAlien(Alien alien) {
         aliens.add(alien);
         addEntity(alien);
     }
 
-    public void adjustAlienSpeed(int speed) {
-        for(Alien  a : aliens) {
-            a.setAlienSpeed(speed);
-            a.moveAlien(currentDirection);
-        }
-    }
-
-
-    public void handleAlienCollision(Alien alien) {
-        System.out.println("Alien hit the wall");
-        changeDirection();
-
-    }
-
-
-    private void changeDirection() {
-        if (currentDirection == Direction.LEFT) {
-            setCurrentDirection(Direction.RIGHT);
-        } else if (currentDirection == Direction.RIGHT) {
-            setCurrentDirection(Direction.LEFT);
-        }
-        setMotion(alienSpeed, currentDirection);
-    }
-
-    void setCurrentDirection(Direction newDirection) {
-        currentDirection = newDirection;
-    }
-
-
-    @Override
-    public void notifyBoundaryTouching(SceneBorder sceneBorder) {
-
-    }
 }
