@@ -3,11 +3,13 @@ package CelestialSiege.scenes;
 import CelestialSiege.CelestialSiege;
 import CelestialSiege.entities.AlienManager;
 import CelestialSiege.entities.Spaceship;
+import CelestialSiege.entities.map.ShieldTileMap;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
+import com.github.hanyaeger.api.scenes.TileMap;
+import com.github.hanyaeger.api.scenes.TileMapContainer;
 
-
-public class GameScene extends DynamicScene {
+public class GameScene extends DynamicScene implements TileMapContainer {
     private CelestialSiege celestialSiege;
     public GameScene(CelestialSiege celestialSiege) {
         this.celestialSiege = celestialSiege;
@@ -26,5 +28,8 @@ public class GameScene extends DynamicScene {
         addEntity(spaceship);
     }
 
-
+    @Override
+    public void setupTileMaps() {
+        addTileMap(new ShieldTileMap());
+    }
 }
