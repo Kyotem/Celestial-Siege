@@ -13,35 +13,32 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 //  Implement different Aliens (Make use of multiple constructors?)
 //  Create spawner for respective aliens
 
+;
 
-public class Alien extends DynamicSpriteEntity implements SceneBorderTouchingWatcher {
+public class Alien extends DynamicSpriteEntity {
 
-
-    private Direction currentDirection;
-    private int alienSpeed = 0;
+    Direction currentDirection;
+    int alienSpeed = 2;
     // Will change based on speed of main Alienclass
 
-    public Alien(Coordinate2D initialLocation) {
-        super("sprites/Alien_Placeholder.png", initialLocation, new Size(40, 40));
+    public Alien(String sprite, Coordinate2D initialLocation) {
+        super(sprite, initialLocation, new Size(40, 40));
         currentDirection = Direction.LEFT;
 
         setMotion(alienSpeed, currentDirection);
     }
 
-    private void changeDirection() {
-        if (currentDirection == Direction.LEFT) {
-            setCurrentDirection(Direction.RIGHT);
-        } else if (currentDirection == Direction.RIGHT) {
-            setCurrentDirection(Direction.LEFT);
-        }
-        setMotion(alienSpeed, currentDirection);
-        moveDown(2);
-    }
+//    private void changeDirection() {
+//        if (currentDirection == Direction.LEFT) {
+//            setCurrentDirection(Direction.RIGHT);
+//        } else if (currentDirection == Direction.RIGHT) {
+//            setCurrentDirection(Direction.LEFT);
+//        }
+//        setMotion(alienSpeed, currentDirection);
+//        moveDown(2);
+//    }
 
     // Inverts the direction
-
-
-
 
 
     private void moveDown(double stepSize) {
@@ -54,16 +51,5 @@ public class Alien extends DynamicSpriteEntity implements SceneBorderTouchingWat
     }
     // Implementation is a bit complex, improve if possible.
 
-
-    @Override
-    public void notifyBoundaryTouching(SceneBorder sceneBorder) {
-        changeDirection();
-    // Reverse direction of alien
-
-    }
-
-    private void setCurrentDirection(Direction newDirection) {
-        currentDirection = newDirection;
-    }
 
 }

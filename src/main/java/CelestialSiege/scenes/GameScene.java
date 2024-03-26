@@ -2,6 +2,7 @@ package CelestialSiege.scenes;
 
 import CelestialSiege.CelestialSiege;
 import CelestialSiege.entities.Alien;
+import CelestialSiege.entities.AlienManager;
 import CelestialSiege.entities.Spaceship;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
@@ -20,8 +21,8 @@ public class GameScene extends DynamicScene {
     @Override
     public void setupEntities() {
         Spaceship spaceship = new Spaceship(new Coordinate2D(399, 550));
-        Alien alien = new Alien(new Coordinate2D(500, 150));
-        addEntity(alien);
+        AlienManager alienManager = new AlienManager(new Coordinate2D(50, 100));
+        addEntity(alienManager);
         addEntity(spaceship);
     }
 
