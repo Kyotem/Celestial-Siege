@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 // TODO
 //  Adjust alienSpeed & MOVEMENT_STEP based on in-game balance
-//
+//  Change speed based on how many aliens are left
 
 
 public class AlienManager extends DynamicCompositeEntity implements SceneBorderTouchingWatcher {
@@ -79,7 +79,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         int START_Y_STRONG = 0;
         for (int column = 0; column < TOTAL_COLUMNS; column++) {
             Alien alien = new Alien(
-                    "sprites/aliens/Alien1_Placeholder.png",
+                    "sprites/aliens/Alien1.png",
                     new Coordinate2D((column * STEP_SIZE), START_Y_STRONG),
                     3,
                     this
@@ -96,7 +96,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
                 int x = column * STEP_SIZE; // Calculate the x coordinate
                 int y = START_Y_STANDARD + row * STEP_SIZE; // Calculate the y coordinate
                 Alien alien = new Alien(
-                        "sprites/aliens/Alien2_Placeholder.png",
+                        "sprites/aliens/Alien2.png",
                         new Coordinate2D(x, y),
                         2,
                         this
@@ -114,7 +114,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
                 int x = column * STEP_SIZE; // Calculate the x coordinate
                 int y = START_Y_WEAK + row * STEP_SIZE; // Calculate the y coordinate
                 Alien alien = new Alien(
-                        "sprites/aliens/Alien3_Placeholder.png",
+                        "sprites/aliens/Alien3.png",
                         new Coordinate2D(x, y),
                         1,
                         this
