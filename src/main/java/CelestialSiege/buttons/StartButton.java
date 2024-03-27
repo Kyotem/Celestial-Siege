@@ -8,7 +8,8 @@ public class StartButton extends Button {
     private CelestialSiege celestialSiege;
 
     public StartButton(Coordinate2D initialLocation, CelestialSiege celestialSiege) {
-        super(initialLocation, "Start Spel");
+        super(initialLocation, "Start game");
+
         this.celestialSiege = celestialSiege;
     }
 

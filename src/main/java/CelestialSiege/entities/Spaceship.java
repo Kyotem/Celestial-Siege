@@ -19,12 +19,14 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
     }
 
     @Override
-    public void onPressedKeysChange(Set<KeyCode> pressedKeys){
-        if(pressedKeys.contains(KeyCode.LEFT)){
-            setMotion(3,270d);
+    public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
+        if (pressedKeys.contains(KeyCode.LEFT)) {
+            setMotion(3, 270d);
 
-        } else if(pressedKeys.contains(KeyCode.RIGHT)){
-            setMotion(3,90d);
+        } else if (pressedKeys.contains(KeyCode.RIGHT)) {
+            setMotion(3, 90d);
+
+        } else if (pressedKeys.contains(KeyCode.SPACE)) {
 
         }
     }
