@@ -46,7 +46,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
         //addEntitySpawner(textSpawner);
     }
 
-t
+
     @Override
     public void setupTileMaps() {
         addTileMap(new ShieldTileMap());
