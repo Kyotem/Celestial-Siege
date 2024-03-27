@@ -24,14 +24,14 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
     @Override
     public void setupScene() {
-        setBackgroundAudio("audio/Audio1.mp3");
+//        setBackgroundAudio("audio/Audio1.mp3");
         setBackgroundImage("backgrounds/background1.jpg");
     }
 
     @Override
     public void setupEntities() {
         spaceship = new Spaceship(new Coordinate2D(349, 550));
-        AlienManager alienManager = new AlienManager(new Coordinate2D(50, 0));
+        AlienManager alienManager = new AlienManager(new Coordinate2D(100, 0));
 
         addEntity(alienManager);
         addEntity(spaceship);
@@ -40,7 +40,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
     @Override
     public void setupEntitySpawners() {
-        BulletContainer bulletContainer = new BulletContainer(1000, spaceship);
+        BulletContainer bulletContainer = new BulletContainer(4000, spaceship);
         addEntitySpawner(bulletContainer);
         // textSpawner = new TextSpawner(700, getWidth(), getHeight());
         //addEntitySpawner(textSpawner);

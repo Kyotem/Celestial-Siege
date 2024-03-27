@@ -1,5 +1,6 @@
 package CelestialSiege.entities;
 
+import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
@@ -19,7 +20,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     private int alienSpeed = 2;
     Direction currentDirection = Direction.RIGHT;
 
-    private final int TOTAL_COLUMNS = 11;
+    private final int TOTAL_COLUMNS = 7;
     private final int STEP_SIZE = 50;
     private final int MOVEMENT_STEP = 5;
 
@@ -32,10 +33,11 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     @Override
     protected void setupEntities() {
 
-        setupStrongAliens();
-        setupStandardAliens();
-        setupWeakAliens();
-        setMotion(alienSpeed, currentDirection);
+        setAnchorPoint(AnchorPoint.TOP_LEFT);
+        setupAlien(0, 1, 3, "sprites/aliens/Alien1.png");
+        setupAlien(50, 2, 2, "sprites/aliens/Alien2.png");
+        setupAlien(150, 2, 1, "sprites/aliens/Alien3.png");
+//        setMotion(alienSpeed, currentDirection);
 
     }
 
@@ -66,63 +68,75 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
 
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
-        changeDirection();
-        moveAliensDown();
+//        changeDirection();
+//        moveAliensDown();
     }
 
+
+    private void setupAlien(int startY, int totalRows, int alienHP, String spritePath) {
+        for (int row = 0; row < totalRows; row++) {
+            for (int column = 0; column < TOTAL_COLUMNS; column++) {
+                int x = column * STEP_SIZE;
+                int y = startY + row * STEP_SIZE;
+                Coordinate2D position = new Coordinate2D(x, y);
+                Alien alien = new Alien(spritePath, position, alienHP, this);
+                addAlien(alien);
+            }
+        }
+    }
 
 
 
     // All types of aliens are initialised below this section
 
-    private void setupStrongAliens() {
-        int START_Y_STRONG = 0;
-        for (int column = 0; column < TOTAL_COLUMNS; column++) {
-            Alien alien = new Alien(
-                    "sprites/aliens/Alien1.png",
-                    new Coordinate2D((column * STEP_SIZE), START_Y_STRONG),
-                    3,
-                    this
-            );
-            addAlien(alien);
-        }
-    }
-    // Used to set up all enemies with an HP value of 3
-
-    private void setupStandardAliens() {
-        int START_Y_STANDARD = 50;
-        for (int row = 0; row < 2; row++) {
-            for (int column = 0; column < TOTAL_COLUMNS; column++) {
-                int x = column * STEP_SIZE; // Calculate the x coordinate
-                int y = START_Y_STANDARD + row * STEP_SIZE; // Calculate the y coordinate
-                Alien alien = new Alien(
-                        "sprites/aliens/Alien2.png",
-                        new Coordinate2D(x, y),
-                        2,
-                        this
-                );
-                addAlien(alien);
-            }
-        }
-    }
-    // Used to set up all enemies with an HP value of 2
-
-    private void setupWeakAliens() {
-        int START_Y_WEAK = 150;
-        for (int row = 0; row < 2; row++) {
-            for (int column = 0; column < TOTAL_COLUMNS; column++) {
-                int x = column * STEP_SIZE; // Calculate the x coordinate
-                int y = START_Y_WEAK + row * STEP_SIZE; // Calculate the y coordinate
-                Alien alien = new Alien(
-                        "sprites/aliens/Alien3.png",
-                        new Coordinate2D(x, y),
-                        1,
-                        this
-                );
-                addAlien(alien);
-            }
-        }
-    }
+//    private void setupStrongAliens() {
+//        int START_Y_STRONG = 0;
+//        for (int column = 0; column < TOTAL_COLUMNS; column ++) {
+//            Alien alien = new Alien(
+//                    "sprites/aliens/Alien1.png",
+//                    new Coordinate2D((column * STEP_SIZE), START_Y_STRONG),
+//                    3,
+//                    this
+//            );
+//            addAlien(alien);
+//        }
+//    }
+//    // Used to set up all enemies with an HP value of 3
+//
+//    private void setupStandardAliens() {
+//        int START_Y_STANDARD = 50;
+//        for (int row = 0; row < 2; row++) {
+//            for (int column = 0; column < TOTAL_COLUMNS; column++) {
+//                int x = column * STEP_SIZE; // Calculate the x coordinate
+//                int y = START_Y_STANDARD + row * STEP_SIZE; // Calculate the y coordinate
+//                Alien alien = new Alien(
+//                        "sprites/aliens/Alien2.png",
+//                        new Coordinate2D(x, y),
+//                        2,
+//                        this
+//                );
+//                addAlien(alien);
+//            }
+//        }
+//    }
+//    // Used to set up all enemies with an HP value of 2
+//
+//    private void setupWeakAliens() {
+//        int START_Y_WEAK = 150;
+//        for (int row = 0; row < 2; row++) {
+//            for (int column = 0; column < TOTAL_COLUMNS; column++) {
+//                int x = column * STEP_SIZE; // Calculate the x coordinate
+//                int y = START_Y_WEAK + row * STEP_SIZE; // Calculate the y coordinate
+//                Alien alien = new Alien(
+//                        "sprites/aliens/Alien3.png",
+//                        new Coordinate2D(x, y),
+//                        1,
+//                        this
+//                );
+//                addAlien(alien);
+//            }
+//        }
+//    }
     // Used to set up all enemies with an HP value of 1
 
     // Add the aliens to the scene
