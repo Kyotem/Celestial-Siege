@@ -1,6 +1,5 @@
 package CelestialSiege.entities;
 
-import CelestialSiege.scenes.GameScene;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Newtonian;
@@ -14,10 +13,8 @@ import java.util.Set;
 
 public class Spaceship extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian {
 
-
-
     public Spaceship(Coordinate2D location) {
-        super("sprites/SpaceShip.png", location, new Size(80, 40));;
+        super("sprites/SpaceShip.png", location, new Size(80, 40));
         setFrictionConstant(0.05);
         setGravityConstant(0);
     }
@@ -28,18 +25,13 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
             setMotion(3, 270d);
         } else if (pressedKeys.contains(KeyCode.RIGHT)) {
             setMotion(3, 90d);
-        } else if (pressedKeys.contains(KeyCode.SPACE)) {
-
         }
     }
-
-
 
 
     @Override
     public void setCurrentFrameIndex(int index) {
     }
-
 
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {

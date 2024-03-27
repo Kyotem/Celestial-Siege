@@ -2,7 +2,6 @@ package CelestialSiege.entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
-import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
 public class BulletContainer extends EntitySpawner {
 
@@ -14,17 +13,15 @@ public class BulletContainer extends EntitySpawner {
         System.out.println("BulletContainer created");
     }
 
-
     @Override
     protected void spawnEntities() {
 
         Bullet bullet = new Bullet(new Coordinate2D(
                 spaceship.getAnchorLocation().getX(),
-                spaceship.getAnchorLocation().getY()),
+                spaceship.getAnchorLocation().getY() - 60),
                 2
                 , 180
         );
-
         spawn(bullet);
     }
 }

@@ -2,7 +2,6 @@ package CelestialSiege.scenes;
 
 import CelestialSiege.CelestialSiege;
 import CelestialSiege.entities.AlienManager;
-import CelestialSiege.entities.Bullet;
 import CelestialSiege.entities.Spaceship;
 import CelestialSiege.entities.BulletContainer;
 import CelestialSiege.entities.map.ShieldTileMap;
@@ -16,7 +15,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
     private CelestialSiege celestialSiege;
 
-    Spaceship spaceship;
+    private Spaceship spaceship;
 
     public GameScene(CelestialSiege celestialSiege) {
         this.celestialSiege = celestialSiege;
