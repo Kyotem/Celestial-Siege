@@ -1,5 +1,6 @@
 package CelestialSiege.entities;
 
+import CelestialSiege.entities.text.HealthText;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Newtonian;
@@ -12,8 +13,12 @@ import javafx.scene.input.KeyCode;
 import java.util.Set;
 
 public class Spaceship extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian {
-    public Spaceship(Coordinate2D location) {
+    private HealthText healthText;
+    private int health = 3;
+    public Spaceship(Coordinate2D location, HealthText healthText) {
         super("sprites/SpaceShip.png", location, new Size(80,40));
+        this.healthText = healthText;
+        healthText.setHealthText(health);
         setFrictionConstant(0.05);
         setGravityConstant(0);
     }

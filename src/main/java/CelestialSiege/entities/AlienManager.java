@@ -135,4 +135,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         aliens.remove(alien); // Remove the alien from the list
     }
 
+
+
 }
+
