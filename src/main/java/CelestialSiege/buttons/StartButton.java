@@ -16,7 +16,7 @@ import javafx.scene.text.FontWeight;
 public class StartButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
     private CelestialSiege celestialSiege;
     public StartButton(Coordinate2D initialLocation, CelestialSiege celestialSiege) {
-        super(initialLocation, "GameKnop");
+        super(initialLocation, "Start game");
         this.celestialSiege = celestialSiege;
         setFill(Color.YELLOW);
         setFont(Font.font("Roboto", FontWeight.BOLD, 30));
