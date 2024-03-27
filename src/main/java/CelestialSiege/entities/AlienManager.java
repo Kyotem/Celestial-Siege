@@ -7,16 +7,15 @@ import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 
 import java.util.ArrayList;
-import java.util.List;
 
 // TODO
 //  Adjust alienSpeed & MOVEMENT_STEP based on in-game balance
-//
+//  Change speed based on how many aliens are left
 
 
 public class AlienManager extends DynamicCompositeEntity implements SceneBorderTouchingWatcher {
 
-    private List<Alien> aliens;
+    private ArrayList<Alien> aliens;
     private int alienSpeed = 2;
     Direction currentDirection = Direction.RIGHT;
 
@@ -39,6 +38,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         setMotion(alienSpeed, currentDirection);
 
     }
+
 
     private void changeDirection() {
         if (currentDirection == Direction.LEFT) {
@@ -71,13 +71,15 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     }
 
 
+
+
     // All types of aliens are initialised below this section
 
     private void setupStrongAliens() {
-        int START_Y_STRONG = 50;
+        int START_Y_STRONG = 0;
         for (int column = 0; column < TOTAL_COLUMNS; column++) {
             Alien alien = new Alien(
-                    "sprites/aliens/Alien1_Placeholder.png",
+                    "sprites/aliens/Alien1.png",
                     new Coordinate2D((column * STEP_SIZE), START_Y_STRONG),
                     3,
                     this
@@ -88,13 +90,13 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     // Used to set up all enemies with an HP value of 3
 
     private void setupStandardAliens() {
-        int START_Y_STANDARD = 100;
+        int START_Y_STANDARD = 50;
         for (int row = 0; row < 2; row++) {
             for (int column = 0; column < TOTAL_COLUMNS; column++) {
                 int x = column * STEP_SIZE; // Calculate the x coordinate
                 int y = START_Y_STANDARD + row * STEP_SIZE; // Calculate the y coordinate
                 Alien alien = new Alien(
-                        "sprites/aliens/Alien2_Placeholder.png",
+                        "sprites/aliens/Alien2.png",
                         new Coordinate2D(x, y),
                         2,
                         this
@@ -106,13 +108,13 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     // Used to set up all enemies with an HP value of 2
 
     private void setupWeakAliens() {
-        int START_Y_WEAK = 200;
+        int START_Y_WEAK = 150;
         for (int row = 0; row < 2; row++) {
             for (int column = 0; column < TOTAL_COLUMNS; column++) {
                 int x = column * STEP_SIZE; // Calculate the x coordinate
                 int y = START_Y_WEAK + row * STEP_SIZE; // Calculate the y coordinate
                 Alien alien = new Alien(
-                        "sprites/aliens/Alien3_Placeholder.png",
+                        "sprites/aliens/Alien3.png",
                         new Coordinate2D(x, y),
                         1,
                         this
@@ -127,6 +129,10 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     private void addAlien(Alien alien) {
         aliens.add(alien);
         addEntity(alien);
+    }
+
+    public void removeAlien(Alien alien) {
+        aliens.remove(alien); // Remove the alien from the list
     }
 
 }
