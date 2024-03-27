@@ -2,6 +2,7 @@ package CelestialSiege.entities;
 
 import CelestialSiege.entities.map.Shield;
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
@@ -15,7 +16,7 @@ public class Bullet extends DynamicSpriteEntity implements Collider, Collided, S
     private BulletContainer bulletContainer;
 
     public Bullet(Coordinate2D initialLocation, int speed, int direction) {
-        super("sprites/Bullet.png", initialLocation);
+        super("sprites/Bullet.png", initialLocation, new Size(35,100));
 
         setMotion(speed, direction);
     }
