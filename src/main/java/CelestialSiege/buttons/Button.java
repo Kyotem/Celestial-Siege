@@ -1,6 +1,5 @@
 package CelestialSiege.buttons;
 
-import CelestialSiege.CelestialSiege;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
@@ -13,20 +12,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class StartButton extends Button {
-    private CelestialSiege celestialSiege;
-    public StartButton(Coordinate2D initialLocation, CelestialSiege celestialSiege) {
-        super(initialLocation, "Start Spel");
-        this.celestialSiege = celestialSiege;
+public abstract class Button extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
+    public Button(Coordinate2D initialLocation, String label) {
+        super(initialLocation, label);
         setFill(Color.YELLOW);
-        setFont(Font.font("Roboto", FontWeight.BOLD, 30));
+        setFont(Font.font("Roboto", FontWeight.BOLD, 45));
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
-
     }
 
-    @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        celestialSiege.setActiveScene(1);
     }
 
     @Override
@@ -37,7 +31,7 @@ public class StartButton extends Button {
 
     @Override
     public void onMouseExited() {
-        setFill(Color.PURPLE);
+        setFill(Color.YELLOW);
         setCursor(Cursor.DEFAULT);
     }
 }
