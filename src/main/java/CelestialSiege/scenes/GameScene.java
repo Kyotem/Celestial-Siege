@@ -1,10 +1,7 @@
 package CelestialSiege.scenes;
 
 import CelestialSiege.CelestialSiege;
-import CelestialSiege.entities.AlienManager;
-import CelestialSiege.entities.AlienShootingTimer;
-import CelestialSiege.entities.Spaceship;
-import CelestialSiege.entities.BulletContainer;
+import CelestialSiege.entities.*;
 import CelestialSiege.entities.map.ShieldTileMap;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
@@ -42,11 +39,8 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
     @Override
     public void setupEntitySpawners() {
-        BulletContainer bulletContainer = new BulletContainer(2000, spaceship);
-        addEntitySpawner(bulletContainer);
-
-        AlienShootingTimer alienShootingTimer = new AlienShootingTimer(alienManager, 800);
-        addEntitySpawner(alienShootingTimer);
+        BulletSpawner bulletSpawner = new BulletSpawner(800, spaceship, alienManager);
+        addEntitySpawner(bulletSpawner);
 
         // textSpawner = new TextSpawner(700, getWidth(), getHeight());
         //addEntitySpawner(textSpawner);
