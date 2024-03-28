@@ -47,17 +47,18 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
 
         UIGameScene uiGameScene = new UIGameScene(new Coordinate2D(0,0), this);
-        addEntity(uiGameScene);
+
 
         scoreBoard = new ScoreBoard(uiGameScene);
-
 
         spaceship = new Spaceship(new Coordinate2D(349, 550), uiGameScene);
 
         alienManager = new AlienManager(new Coordinate2D(100, 0), scoreBoard);
 
+        addEntity(uiGameScene);
         addEntity(alienManager);
         addEntity(spaceship);
+
 
 
     }

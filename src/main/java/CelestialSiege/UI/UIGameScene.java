@@ -19,15 +19,16 @@ public class UIGameScene extends UIComponent {
         setupEntities();
     }
 
-    protected void setupEntities() {
+    public void setupEntities() {
         createTextEntities();
         createButtonEntities();
     }
 
     // TODO Fix hardcoded position values, create common constants
+    // FIXME Fix overlapping issues with update-able UI Elements
     private void createTextEntities() {
         healthText = new CustomTextEntity(new Coordinate2D(20, 610),
-                "Health: 3", AnchorPoint.TOP_LEFT, "Roboto", FontWeight.BOLD, 30, Color.YELLOW
+                "Health: ", AnchorPoint.TOP_LEFT, "Roboto", FontWeight.BOLD, 30, Color.YELLOW
         );
         scoreText = new CustomTextEntity(new Coordinate2D(20, 650),
                 "Score: ", AnchorPoint.TOP_LEFT, "Roboto", FontWeight.BOLD, 30, Color.YELLOW
@@ -43,9 +44,12 @@ public class UIGameScene extends UIComponent {
 
     }
 
-
-    // FIXME Fix overlap
     public void updateScoreText(int score) {
         scoreText.setText("Score: " + score);
     }
+
+    public void updateHealthText(String HP) {
+        healthText.setText(HP);
+    }
+
 }

@@ -57,6 +57,7 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
     @Override
     public void onCollision(List<Collider> list) {
         playerHP--;
+        uiGameScene.updateHealthText("Health: " + playerHP);
         // Should the UI be updated here?
         checkForLoss();
     }

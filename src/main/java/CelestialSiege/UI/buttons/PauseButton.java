@@ -30,7 +30,7 @@ public class PauseButton extends Button implements MouseButtonPressedListener {
     // Method called when button is pressed -> toggles pause state & buttontext
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        updateButtonText();
+//        updateButtonText(); Temp disable due to overlap issues
         toggleGameState();
     }
 
