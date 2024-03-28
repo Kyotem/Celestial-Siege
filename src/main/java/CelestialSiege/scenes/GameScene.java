@@ -3,6 +3,7 @@ package CelestialSiege.scenes;
 import CelestialSiege.CelestialSiege;
 import CelestialSiege.buttons.PauseButton;
 import CelestialSiege.entities.AlienManager;
+import CelestialSiege.entities.BulletSpawner;
 import CelestialSiege.entities.ScoreBoard;
 import CelestialSiege.entities.Spaceship;
 
@@ -28,6 +29,8 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
     private Spaceship spaceship;
 
+    private ScoreBoard scoreBoard;
+
 
     public GameScene(CelestialSiege celestialSiege) {
         this.celestialSiege = celestialSiege;
@@ -47,9 +50,9 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
         addEntity(healthText);
         ScoreText scoreText = new ScoreText(new Coordinate2D(20, 650));
         addEntity(scoreText);
-        ScoreBoard scoreboard = new ScoreBoard(scoreText);
+        scoreBoard = new ScoreBoard(scoreText);
 
-        Spaceship spaceship = new Spaceship(new Coordinate2D(349, 550), healthText);
+        spaceship = new Spaceship(new Coordinate2D(349, 550), healthText);
 
         alienManager = new AlienManager(new Coordinate2D(100, 0));
 

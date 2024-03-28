@@ -12,13 +12,12 @@ import java.util.List;
 //  Parse Score through to Scoreborad class
 //  add loss condition (aliens pass certain y point)
 
-
 public class Alien extends DynamicSpriteEntity implements Collided, Collider {
 
-    AlienManager alienManager;
-    // Use on later date for handling arraylist access
+    private AlienManager alienManager;
   
     private ScoreBoard scoreboard; // Add a scoreboard field (Refactor later)
+    // FIXME add scoreboard reference via constructor
   
     private int alienHP;
     private int scorePoints = 0;
@@ -33,43 +32,31 @@ public class Alien extends DynamicSpriteEntity implements Collided, Collider {
         this.alienManager = alienManager;
     }
 
-
-    // TODO Remove toString debug func
-    @Override
-    public String toString() {
-        return "Alien{" +
-                "alienManager=" + alienManager +
-                ", alienHP=" + alienHP +
-                ", scorePoints=" + scorePoints +
-                '}';
-    }
-
-    private void destroyAndGrantScore() {
-
-        alienManager.removeAlien(this);
-        remove();
-        scoreboard.addPoints(scorePoints);
-        // Removes the entity from the AlienManager's list & currentscene
-
-        // TODO add func to send score to scoreboard
-    }
-
-
-
-
     private void decreaseHP() {
         alienHP--;
     }
 
-    private boolean shouldDelete() {
+    // Removes the entity (Alien) from the AlienManager's list & the currently active scene
+    private void destroy() {
+        alienManager.removeAlien(this);
+        remove();
+    }
+
+    // Adds points from this instance to the scoreboard
+    private void grantScore() {
+        scoreboard.addPoints(scorePoints);
+    }
+    private boolean shouldDestroy() {
         return alienHP <= 0;
     }
 
+    // Called when player collides with a bullet
     @Override
     public void onCollision(List<Collider> list) {
         decreaseHP();
-        if (shouldDelete()) {
-            destroyAndGrantScore();
+        if (shouldDestroy()) {
+            grantScore();
+            destroy();
         }
         // Decreases HP, then checks if it's under 0 to see if it should be deleted, then the function grants the score.
     }
