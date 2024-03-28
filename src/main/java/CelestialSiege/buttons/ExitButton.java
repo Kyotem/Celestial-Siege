@@ -12,6 +12,7 @@ public class ExitButton extends Button {
         this.celestialSiege = celestialSiege;
     }
 
+    // Method called when button is pressed -> Closes game
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         celestialSiege.quit();
