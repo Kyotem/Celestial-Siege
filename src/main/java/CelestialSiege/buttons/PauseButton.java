@@ -5,7 +5,6 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import javafx.scene.input.MouseButton;
 
-
 public class PauseButton extends Button implements MouseButtonPressedListener {
     private GameScene gameScene; // Reference to the containing scene
 

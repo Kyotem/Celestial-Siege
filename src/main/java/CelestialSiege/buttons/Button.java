@@ -14,9 +14,9 @@ import javafx.scene.text.FontWeight;
 
 public abstract class Button extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
 
-   private final Color PRIMARY_COLOR = Color.YELLOW;
-   private final Color SECONDARY_COLOR = Color.VIOLET;
-   private final int BUTTON_SIZE = 45;
+    private final Color PRIMARY_COLOR = Color.YELLOW;
+    private final Color SECONDARY_COLOR = Color.VIOLET;
+    private final int BUTTON_SIZE = 45;
 
     public Button(Coordinate2D initialLocation, String label) {
         super(initialLocation, label);
@@ -36,7 +36,7 @@ public abstract class Button extends TextEntity implements MouseButtonPressedLis
         setCursor(Cursor.HAND);
     }
 
-   // When mouse exists button, reset color to default.
+    // When mouse exists button, reset color to default.
     @Override
     public void onMouseExited() {
         setFill(PRIMARY_COLOR);
