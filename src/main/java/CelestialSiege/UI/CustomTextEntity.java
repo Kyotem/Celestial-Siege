@@ -18,14 +18,5 @@ public class CustomTextEntity extends TextEntity {
         setText(text);
     }
 
-    // For now only uses int,
-    // Sets a String of text combined with a variable
-//    public void setTextWithVariable(String mainText) {
-//        if (variable <= 0) {
-//            return;
-//        } else {
-//            setText(mainText);
-//        }
-//    }
 
 }

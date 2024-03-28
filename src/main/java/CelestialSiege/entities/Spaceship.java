@@ -1,7 +1,6 @@
 package CelestialSiege.entities;
 
 import CelestialSiege.UI.UIGameScene;
-import CelestialSiege.entities.text.HealthText;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.*;
