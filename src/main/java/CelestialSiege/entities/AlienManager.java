@@ -17,9 +17,9 @@ import java.util.ArrayList;
 public class AlienManager extends DynamicCompositeEntity implements SceneBorderTouchingWatcher {
 
     private ArrayList<Alien> aliens;
-    private int alienSpeed = 2;
-    Direction currentDirection = Direction.RIGHT;
+    private Direction currentDirection = Direction.RIGHT;
 
+    private int alienSpeed = 2;
     private final int TOTAL_COLUMNS = 10;
     private final int STEP_SIZE = 50;
     private final int MOVEMENT_STEP = 5;
@@ -35,7 +35,6 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     protected void setupEntities() {
 
         aliens.clear();
-
         setupAlien(0, 1, 3, "sprites/aliens/Alien1.png");
         setupAlien(50, 2, 2, "sprites/aliens/Alien2.png");
         setupAlien(150, 2, 1, "sprites/aliens/Alien3.png");
@@ -43,17 +42,18 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
 
     }
 
-
+    // Get X-pos of the CompositeEntity itself
     public double getXPosition() {
         return getAnchorLocation().getX();
     }
 
+    // Get Y-pos of the CompositeEntity itself
     public double getYPosition() {
         return getAnchorLocation().getY();
     }
 
 
-
+    // Inverts the direction left & right
     private void changeDirection() {
         if (currentDirection == Direction.LEFT) {
             setCurrentDirection(Direction.RIGHT);
@@ -62,12 +62,12 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         }
         setMotion(alienSpeed, currentDirection);
     }
-    // Inverts the direction
 
     private void setCurrentDirection(Direction newDirection) {
         currentDirection = newDirection;
     }
 
+    // Moves all Aliens of the CompositeEntity (AlienManager) down by MOVEMENT_STEP
     private void moveAliensDown() {
         // Calc new Y Coord based on StepSize.
         double newY = getAnchorLocation().getY() + MOVEMENT_STEP;
@@ -76,15 +76,15 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         // Apply new pos to current AnchorLocation
         setAnchorLocation(newAnchorLocation);
     }
-    // Moves all Aliens of the CompositeEntity (AlienManager) down by MOVEMENT_STEP
 
+    // Called when the AlienManager hits a sceneBorder
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
         changeDirection();
         moveAliensDown();
     }
 
-
+    // Sets up aliens in a grid based on given parameters
     private void setupAlien(int startY, int totalRows, int alienHP, String spritePath) {
         for (int row = 0; row < totalRows; row++) {
             for (int column = 0; column < TOTAL_COLUMNS; column++) {
@@ -103,11 +103,12 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         addEntity(alien);
     }
 
+    // TODO remove feature if arrayList remains unused / removed
+    // Remove the alien from the list
     public void removeAlien(Alien alien) {
-        aliens.remove(alien); // Remove the alien from the list
-
+        aliens.remove(alien);
+        // removeEntity() is called in the Alien class itself, not the manager.
     }
-
 
 
 }
