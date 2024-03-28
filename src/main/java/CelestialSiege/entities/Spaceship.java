@@ -58,9 +58,6 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
     public void onCollision(List<Collider> list) {
         System.out.println("Spaceship got hit");
         health--;
-        // Logic to decrease HP visualizer? Or does HP UI update based on the value?
-        handleLoss();
-        playerHP--;
         // Should the UI be updated here?
         checkForLoss();
     }
@@ -79,9 +76,11 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
 
     public int getPlayerHP() {
         return health;
+    }
 
     public void setPlayerHP(int newPlayerHP) {
-        playerHP = newPlayerHP;
+        health = newPlayerHP;
     }
+
 
 }
