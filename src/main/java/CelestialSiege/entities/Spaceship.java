@@ -16,6 +16,9 @@ import java.util.Set;
 
 public class Spaceship extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided, Collider {
 
+
+    private int playerHP = 3;
+
     public Spaceship(Coordinate2D location) {
         super("sprites/SpaceShip.png", location, new Size(80, 40));
         setFrictionConstant(0.05);
@@ -53,6 +56,24 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
     @Override
     public void onCollision(List<Collider> list) {
         System.out.println("Spaceship got hit");
-        // Implement HP Decrease here
+        playerHP--;
+        // Logic to decrease HP visualizer? Or does HP UI update based on the value?
+        handleLoss();
     }
+
+    private void handleLoss() {
+        if (isDead()) {
+            System.out.println("Lost Game");
+            // Logic here to change scene to endscreen
+        }
+    }
+
+    private boolean isDead() {
+        return playerHP <= 0;
+    }
+
+    public int getPlayerHP() {
+        return playerHP;
+    }
+
 }

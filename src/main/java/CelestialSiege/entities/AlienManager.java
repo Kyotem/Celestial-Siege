@@ -12,6 +12,7 @@ import java.util.ArrayList;
 // TODO
 //  Adjust alienSpeed & MOVEMENT_STEP based on in-game balance
 //  Change speed based on how many aliens are left
+//  Add respawn mechanism
 
 public class AlienManager extends DynamicCompositeEntity implements SceneBorderTouchingWatcher {
 
@@ -32,6 +33,8 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
 
     @Override
     protected void setupEntities() {
+
+        aliens.clear();
 
         setupAlien(0, 1, 3, "sprites/aliens/Alien1.png");
         setupAlien(50, 2, 2, "sprites/aliens/Alien2.png");
@@ -103,7 +106,9 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     public void removeAlien(Alien alien) {
         aliens.remove(alien); // Remove the alien from the list
 
-
     }
+
+
+
 
 }
