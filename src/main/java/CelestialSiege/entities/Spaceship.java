@@ -3,10 +3,7 @@ package CelestialSiege.entities;
 import CelestialSiege.entities.text.HealthText;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.entities.Collided;
-import com.github.hanyaeger.api.entities.Collider;
-import com.github.hanyaeger.api.entities.Newtonian;
-import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
+import com.github.hanyaeger.api.entities.*;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
@@ -18,13 +15,14 @@ import java.util.Set;
 
 public class Spaceship extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided, Collider {
 
-    private HealthText healthText;
-    private int health = 3;
+    private HealthText healthText; // TODO Move healthText to respective class, implement UI Classes.
+    private int playerHP = 3;
+    private final int PLAYER_SPEED = 3;
 
     public Spaceship(Coordinate2D location, HealthText healthText) {
         super("sprites/SpaceShip.png", location, new Size(80, 40));
         this.healthText = healthText;
-        healthText.setHealthText(health);
+        healthText.setHealthText(playerHP);
         setFrictionConstant(0.05);
         setGravityConstant(0);
     }
@@ -33,9 +31,9 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (pressedKeys.contains(KeyCode.LEFT)) {
-            setMotion(3, 270d);
+            setMotion(PLAYER_SPEED, Direction.LEFT);
         } else if (pressedKeys.contains(KeyCode.RIGHT)) {
-            setMotion(3, 90d);
+            setMotion(PLAYER_SPEED, Direction.RIGHT);
         }
     }
 
@@ -54,16 +52,15 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
         }
     }
 
-    // Checks for collision, if hit, deductHP and check if player is dead)
+    // Called when Spaceship collided with collider, if hit, deduct HP and check if player is dead.
     @Override
     public void onCollision(List<Collider> list) {
-        System.out.println("Spaceship got hit");
-        health--;
+        playerHP--;
         // Should the UI be updated here?
         checkForLoss();
     }
 
-    // Checks if player is dead, if true, sends user to endscreen
+    // Checks if player is dead, if true, send user to endscreen
     private void checkForLoss() {
         if (isDead()) {
             System.out.println("Lost Game"); // TODO Remove once implemented properly
@@ -72,16 +69,15 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
     }
 
     private boolean isDead() {
-        return health <= 0;
+        return playerHP <= 0;
     }
 
     public int getPlayerHP() {
-        return health;
+        return playerHP;
     }
 
     public void setPlayerHP(int newPlayerHP) {
-        health = newPlayerHP;
+        playerHP = newPlayerHP;
     }
-
 
 }
