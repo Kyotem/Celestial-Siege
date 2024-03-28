@@ -33,11 +33,11 @@ public class UITitleScene extends UIComponent {
     // Method used to initialise all Text entities
     private void createTextEntities() {
         CustomTextEntity titleText = new CustomTextEntity(
-                new Coordinate2D(titleScene.getWidth() / 2, titleScene.getHeight() * 0.20), //FIXME calc
+                new Coordinate2D(titleScene.getWidth() / 2, titleScene.getHeight() * 0.20),
                 "Celestial Siege",
                 AnchorPoint.CENTER_CENTER, "Roboto", FontWeight.SEMI_BOLD, 80, Color.WHITE
         );
-        addEntity(titleText); // TODO create a better way to add all these entities
+        addEntity(titleText);
     }
 
     // Method used to initialise all Button entities

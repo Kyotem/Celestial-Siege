@@ -15,14 +15,13 @@ import java.util.Set;
 
 public class Spaceship extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided, Collider {
 
-    private UIGameScene uiGameScene; // TODO Move healthText to respective class, implement UI Classes.
+    private UIGameScene uiGameScene;
     private int playerHP = 3;
     private final int PLAYER_SPEED = 3;
 
     public Spaceship(Coordinate2D location, UIGameScene uiGameScene) {
         super("sprites/SpaceShip.png", location, new Size(80, 40));
         this.uiGameScene = uiGameScene;
-//        healthText.setHealthText(playerHP); FIXME
         setFrictionConstant(0.05);
         setGravityConstant(0);
     }
@@ -52,12 +51,11 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
         }
     }
 
-    // Called when Spaceship collided with collider, if hit, deduct HP and check if player is dead.
+    // Called when Spaceship collided with collider, if hit, deduct HP, update UI and check if player is dead.
     @Override
     public void onCollision(List<Collider> list) {
         playerHP--;
         uiGameScene.updateHealthText("Health: " + playerHP);
-        // Should the UI be updated here?
         checkForLoss();
     }
 
