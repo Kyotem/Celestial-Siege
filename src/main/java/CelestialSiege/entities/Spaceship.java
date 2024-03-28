@@ -16,7 +16,6 @@ import java.util.Set;
 
 public class Spaceship extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided, Collider {
 
-
     private int playerHP = 3;
 
     public Spaceship(Coordinate2D location) {
@@ -25,6 +24,7 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
         setGravityConstant(0);
     }
 
+    // Used to allow the player to move left & right based on arrowkey input.
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (pressedKeys.contains(KeyCode.LEFT)) {
@@ -33,6 +33,8 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
             setMotion(3, 90d);
         }
     }
+
+    // Checks which border is being touched, based on that, reset position to the edge.
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
         setSpeed(0);
@@ -49,16 +51,16 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
 
     @Override
     public void onCollision(List<Collider> list) {
-        System.out.println("Spaceship got hit");
         playerHP--;
-        // Logic to decrease HP visualizer? Or does HP UI update based on the value?
-        handleLoss();
+        // Should the UI be updated here?
+        checkForLoss();
     }
 
-    private void handleLoss() {
+    // Checks if player is dead, if true, sends user to endscreen
+    private void checkForLoss() {
         if (isDead()) {
-            System.out.println("Lost Game");
-            // Logic here to change scene to endscreen
+            System.out.println("Lost Game"); // TODO Remove once implemented properly
+            // TODO Implement logic here to change scene to endscreen
         }
     }
 
