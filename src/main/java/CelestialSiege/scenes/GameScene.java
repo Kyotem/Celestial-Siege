@@ -54,7 +54,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
         spaceship = new Spaceship(new Coordinate2D(349, 550), healthText);
 
-        alienManager = new AlienManager(new Coordinate2D(100, 0));
+        alienManager = new AlienManager(new Coordinate2D(100, 0), scoreBoard);
 
         addEntity(alienManager);
         addEntity(spaceship);
@@ -71,6 +71,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
         BulletSpawner bulletSpawner = new BulletSpawner(800, spaceship, alienManager);
         addEntitySpawner(bulletSpawner);
 
+        // What does textSpawner do? TODO Remove if remains unused
         // textSpawner = new TextSpawner(700, getWidth(), getHeight());
         //addEntitySpawner(textSpawner);
     }
