@@ -1,5 +1,6 @@
 package CelestialSiege.entities;
 
+import CelestialSiege.entities.text.HealthText;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
@@ -14,12 +15,16 @@ import javafx.scene.input.KeyCode;
 import java.util.List;
 import java.util.Set;
 
+
 public class Spaceship extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided, Collider {
 
-    private int playerHP = 3;
+    private HealthText healthText;
+    private int health = 3;
 
-    public Spaceship(Coordinate2D location) {
+    public Spaceship(Coordinate2D location, HealthText healthText) {
         super("sprites/SpaceShip.png", location, new Size(80, 40));
+        this.healthText = healthText;
+        healthText.setHealthText(health);
         setFrictionConstant(0.05);
         setGravityConstant(0);
     }
@@ -51,6 +56,10 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
 
     @Override
     public void onCollision(List<Collider> list) {
+        System.out.println("Spaceship got hit");
+        health--;
+        // Logic to decrease HP visualizer? Or does HP UI update based on the value?
+        handleLoss();
         playerHP--;
         // Should the UI be updated here?
         checkForLoss();
@@ -65,12 +74,11 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
     }
 
     private boolean isDead() {
-        return playerHP <= 0;
+        return health <= 0;
     }
 
     public int getPlayerHP() {
-        return playerHP;
-    }
+        return health;
 
     public void setPlayerHP(int newPlayerHP) {
         playerHP = newPlayerHP;

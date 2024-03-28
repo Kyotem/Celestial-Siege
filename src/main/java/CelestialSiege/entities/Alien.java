@@ -12,12 +12,16 @@ import java.util.List;
 //  Parse Score through to Scoreborad class
 //  add loss condition (aliens pass certain y point)
 
+
 public class Alien extends DynamicSpriteEntity implements Collided, Collider {
 
     AlienManager alienManager;
     // Use on later date for handling arraylist access
+  
+    private ScoreBoard scoreboard; // Add a scoreboard field (Refactor later)
+  
     private int alienHP;
-    private int scorePoints;
+    private int scorePoints = 0;
 
     // Will change based on speed of main Alienclass
 
@@ -25,6 +29,7 @@ public class Alien extends DynamicSpriteEntity implements Collided, Collider {
         super(sprite, initialLocation, new Size(40, 40));
         this.alienHP = alienHP;
         scorePoints = alienHP * 100;
+
         this.alienManager = alienManager;
     }
 
@@ -43,10 +48,14 @@ public class Alien extends DynamicSpriteEntity implements Collided, Collider {
 
         alienManager.removeAlien(this);
         remove();
+        scoreboard.addPoints(scorePoints);
         // Removes the entity from the AlienManager's list & currentscene
 
         // TODO add func to send score to scoreboard
     }
+
+
+
 
     private void decreaseHP() {
         alienHP--;
