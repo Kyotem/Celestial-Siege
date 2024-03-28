@@ -71,6 +71,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
         BulletSpawner bulletSpawner = new BulletSpawner(800, spaceship, alienManager);
         addEntitySpawner(bulletSpawner);
 
+        // What does textSpawner do? TODO Remove if remains unused
         // textSpawner = new TextSpawner(700, getWidth(), getHeight());
         //addEntitySpawner(textSpawner);
     }
