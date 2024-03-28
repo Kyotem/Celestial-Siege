@@ -8,17 +8,18 @@ public class ScoreBoard {
 
     public ScoreBoard(ScoreText scoreText) {
         this.totalPoints = 0;
-        this.scoreText = scoreText; // Initialize the ScoreText object
+        this.scoreText = scoreText;
         scoreText.setScoreText(totalPoints);
     }
 
+    // Adds points to scoreboard & updates text
     public void addPoints(int points) {
         totalPoints += points;
         scoreText.setScoreText(totalPoints);
     }
 
+    // TODO remove if remains unused
     public int getTotalPoints() {
-
         return totalPoints;
     }
 }
