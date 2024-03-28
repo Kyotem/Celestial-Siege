@@ -1,7 +1,5 @@
 package CelestialSiege.entities;
 
-
-
 import CelestialSiege.entities.text.ScoreText;
 
 public class ScoreBoard {
@@ -16,7 +14,7 @@ public class ScoreBoard {
 
     public void addPoints(int points) {
         totalPoints += points;
-
+        scoreText.setScoreText(totalPoints);
     }
 
     public int getTotalPoints() {

@@ -16,7 +16,7 @@ public class Alien extends DynamicSpriteEntity implements Collided, Collider {
 
     private AlienManager alienManager;
   
-    private ScoreBoard scoreboard; // Add a scoreboard field (Refactor later)
+ // Add a scoreboard field (Refactor later)
     // FIXME add scoreboard reference via constructor
   
     private int alienHP;
@@ -44,7 +44,7 @@ public class Alien extends DynamicSpriteEntity implements Collided, Collider {
 
     // Adds points from this instance to the scoreboard
     private void grantScore() {
-        scoreboard.addPoints(scorePoints);
+        alienManager.grantScore(scorePoints);
     }
     private boolean shouldDestroy() {
         return alienHP <= 0;

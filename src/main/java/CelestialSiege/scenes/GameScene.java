@@ -54,7 +54,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
         spaceship = new Spaceship(new Coordinate2D(349, 550), healthText);
 
-        alienManager = new AlienManager(new Coordinate2D(100, 0));
+        alienManager = new AlienManager(new Coordinate2D(100, 0), scoreBoard);
 
         addEntity(alienManager);
         addEntity(spaceship);

@@ -18,6 +18,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
 
     private ArrayList<Alien> aliens;
     private Direction currentDirection = Direction.RIGHT;
+    private ScoreBoard scoreboard;
 
     private int alienSpeed = 2;
     private final int TOTAL_COLUMNS = 10;
@@ -25,8 +26,9 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     private final int MOVEMENT_STEP = 5;
 
 
-    public AlienManager(Coordinate2D initialLocation) {
+    public AlienManager(Coordinate2D initialLocation, ScoreBoard scoreboard) {
         super(initialLocation);
+        this.scoreboard = scoreboard;
         setAnchorPoint(AnchorPoint.BOTTOM_LEFT);
         aliens = new ArrayList<>();
     }
@@ -109,5 +111,11 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         aliens.remove(alien);
         // removeEntity() is called in the Alien class itself, not the manager.
     }
+
+    public void grantScore(int scorePoints) {
+        scoreboard.addPoints(scorePoints);
+    }
+
+
 }
 
