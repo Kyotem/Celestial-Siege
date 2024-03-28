@@ -109,7 +109,5 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         aliens.remove(alien);
         // removeEntity() is called in the Alien class itself, not the manager.
     }
-
-
 }
 
