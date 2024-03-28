@@ -13,22 +13,23 @@ public class BulletSpawner extends EntitySpawner {
     private final Spaceship spaceship;
     private final AlienManager alienManager;
     private final Random random;
-    private int alienBulletSpawnCounter = 1;
+    private int alienBulletSpawnCounter = 1; // Used to determine @ which interval the aliens should be able to shoot a bullet
 
     public BulletSpawner(long intervalInMs, Spaceship spaceship, AlienManager alienManager) {
         super(intervalInMs);
         this.spaceship = spaceship;
         this.alienManager = alienManager;
         this.random = new Random();
-
     }
 
+    // Called every after every intervalInMs
     @Override
     protected void spawnEntities() {
         spawnBulletAboveSpaceship();
         spawnBulletFromAlienIfNeeded();
     }
 
+    // Spawns a bullet above the spaceship towards the aliens
     private void spawnBulletAboveSpaceship() {
         Bullet bullet = new Bullet(
                 new Coordinate2D(
@@ -40,7 +41,9 @@ public class BulletSpawner extends EntitySpawner {
         spawn(bullet);
     }
 
-    private void spawnBulletFromAlienIfNeeded() { // Change method if possible
+    // Spawns a bullet under the CompositeEntity AlienManager
+    // CompositeEntity does not rescale vertically, bullets shoot to low find a fix for this TODO
+    private void spawnBulletFromAlienIfNeeded() {
         if (alienBulletSpawnCounter == 2) {
 
             if (random.nextDouble() < 0.5) {

@@ -54,6 +54,7 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
         }
     }
 
+    // Checks for collision, if hit, deductHP and check if player is dead)
     @Override
     public void onCollision(List<Collider> list) {
         System.out.println("Spaceship got hit");
