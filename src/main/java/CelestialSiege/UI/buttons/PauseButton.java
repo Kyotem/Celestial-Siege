@@ -15,7 +15,7 @@ import javafx.scene.text.FontWeight;
 */
 
 public class PauseButton extends Button implements MouseButtonPressedListener {
-    private GameScene gameScene;
+    private final GameScene gameScene;
 
     private boolean isGamePaused = false;
     private final int BUTTON_SIZE = 50;

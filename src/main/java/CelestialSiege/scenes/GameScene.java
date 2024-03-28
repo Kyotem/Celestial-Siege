@@ -20,7 +20,6 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
     private CelestialSiege celestialSiege;
 
-
     private PauseButton pauseButton;
 
     private AlienManager alienManager;
@@ -44,10 +43,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
     @Override
     public void setupEntities() {
 
-
-
         UIGameScene uiGameScene = new UIGameScene(new Coordinate2D(0,0), this);
-
 
         scoreBoard = new ScoreBoard(uiGameScene);
 
@@ -59,8 +55,6 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
         addEntity(alienManager);
         addEntity(spaceship);
 
-
-
     }
 
     @Override
@@ -68,9 +62,6 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
         BulletSpawner bulletSpawner = new BulletSpawner(800, spaceship, alienManager);
         addEntitySpawner(bulletSpawner);
 
-        // What does textSpawner do? TODO Remove if remains unused
-        // textSpawner = new TextSpawner(700, getWidth(), getHeight());
-        //addEntitySpawner(textSpawner);
     }
 
     @Override

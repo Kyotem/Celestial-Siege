@@ -10,14 +10,14 @@ import com.github.hanyaeger.api.scenes.StaticScene;
 import javafx.scene.paint.Color;
 import javafx.scene.text.FontWeight;
 
-public class UIStartScene extends UIComponent {
+public class UITitleScene extends UIComponent {
 
     CelestialSiege celestialSiege;
 
     // Use positions from titleScene in-case it has different dimensions from maingame
     StaticScene titleScene;
 
-    public UIStartScene(Coordinate2D initialLocation, TitleScene titleScene, CelestialSiege celestialSiege) {
+    public UITitleScene(Coordinate2D initialLocation, TitleScene titleScene, CelestialSiege celestialSiege) {
         super(initialLocation);
         this.celestialSiege = celestialSiege;
         this.titleScene = titleScene;
@@ -49,7 +49,6 @@ public class UIStartScene extends UIComponent {
                 new Coordinate2D(titleScene.getWidth() / 2, titleScene.getHeight() * 0.7), celestialSiege);
 
         addEntity(startButton);
-
         addEntity(exitButton);
     }
 
