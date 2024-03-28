@@ -1,6 +1,7 @@
 package CelestialSiege.scenes;
 
 import CelestialSiege.CelestialSiege;
+import CelestialSiege.UI.UIGameScene;
 import CelestialSiege.UI.buttons.PauseButton;
 import CelestialSiege.entities.AlienManager;
 import CelestialSiege.entities.BulletSpawner;
@@ -44,10 +45,10 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
     @Override
     public void setupEntities() {
 
-        HealthText healthText = new HealthText(new Coordinate2D(20, 610));
-        addEntity(healthText);
-        ScoreText scoreText = new ScoreText(new Coordinate2D(20, 650));
-        addEntity(scoreText);
+
+        UIGameScene uiGameScene = new UIGameScene(new Coordinate2D(0,0));
+        addEntity(uiGameScene);
+
         scoreBoard = new ScoreBoard(scoreText);
 
         spaceship = new Spaceship(new Coordinate2D(349, 550), healthText);

@@ -2,18 +2,11 @@ package CelestialSiege.scenes;
 
 import CelestialSiege.CelestialSiege;
 
-import CelestialSiege.UI.UIStartMenu;
-import CelestialSiege.UI.buttons.ExitButton;
-import CelestialSiege.UI.buttons.StartButton;
-import com.github.hanyaeger.api.AnchorPoint;
+import CelestialSiege.UI.UIStartScene;
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
 import java.util.Set;
 
@@ -33,25 +26,12 @@ public class TitleScene extends StaticScene implements KeyListener {
 
     @Override
     public void setupEntities() {
-//        var CelestialSiegeText = new TextEntity(
-//                new Coordinate2D(getWidth() / 2, getHeight() * 0.20),
-//                "Celestial Siege"
-//        );
-//        CelestialSiegeText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-//        CelestialSiegeText.setFill(Color.WHITE);
-//        CelestialSiegeText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
-//
-//        addEntity(CelestialSiegeText);
 
-        UIStartMenu uiStartMenu = new UIStartMenu(new Coordinate2D(0,0), this);
-        addEntity(uiStartMenu);
-        // TODO Fix Ypos being hardcoded for buttons, use standard offset
-        StartButton startButton = new StartButton(
-                new Coordinate2D(getWidth() / 2, getHeight() * 0.5), celestialSiege);
-        ExitButton exitButton = new ExitButton(
-                new Coordinate2D(getWidth() / 2, getHeight() * 0.7), celestialSiege);
-        addEntity(startButton);
-        addEntity(exitButton);
+        // Initialise UI for the TitleScene
+        UIStartScene uiTitleScene = new UIStartScene(new Coordinate2D(0,0), this, celestialSiege);
+        addEntity(uiTitleScene);
+
+
     }
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKey) {

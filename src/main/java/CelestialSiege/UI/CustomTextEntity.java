@@ -9,6 +9,7 @@ import javafx.scene.text.FontWeight;
 
 public class CustomTextEntity extends TextEntity {
 
+    // Creates a TextEntity with given parameters
     public CustomTextEntity(Coordinate2D initialLocation, String text, AnchorPoint anchorPoint, String font, FontWeight fontWeight, int fontSize, Color color) {
         super(initialLocation);
         setFont(Font.font(font, fontWeight, fontSize));
@@ -18,6 +19,7 @@ public class CustomTextEntity extends TextEntity {
     }
 
     // For now only uses int,
+    // Sets a String of text combined with a variable
     public void setTextWithVariable(String mainText, int variable) {
         setText(mainText + ": " + variable);
     }

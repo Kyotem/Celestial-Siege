@@ -21,4 +21,8 @@ public abstract class UIComponent extends CompositeEntity {
 
     }
 
+    public void updateText() {
+        // Rename?
+    }
+
 }

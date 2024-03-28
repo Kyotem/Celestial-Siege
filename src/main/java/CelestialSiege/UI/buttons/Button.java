@@ -12,6 +12,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+// TODO can Button be changed to use CustomTextEntity?
+
 public abstract class Button extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
 
     private final Color PRIMARY_COLOR = Color.YELLOW;
