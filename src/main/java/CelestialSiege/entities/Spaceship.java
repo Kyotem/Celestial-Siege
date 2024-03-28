@@ -33,12 +33,6 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
             setMotion(3, 90d);
         }
     }
-
-
-    @Override
-    public void setCurrentFrameIndex(int index) {
-    }
-
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
         setSpeed(0);
@@ -74,6 +68,10 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
 
     public int getPlayerHP() {
         return playerHP;
+    }
+
+    public void setPlayerHP(int newPlayerHP) {
+        playerHP = newPlayerHP;
     }
 
 }
