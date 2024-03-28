@@ -21,8 +21,9 @@ public class PauseButton extends Button implements MouseButtonPressedListener {
     private final int BUTTON_SIZE = 50;
 
     public PauseButton(Coordinate2D initialLocation, GameScene gameScene) {
-        super(initialLocation, "Pause");
+        super(initialLocation, "Test");
         setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, BUTTON_SIZE));
+        setText("Pause");
         this.gameScene = gameScene;
     }
 

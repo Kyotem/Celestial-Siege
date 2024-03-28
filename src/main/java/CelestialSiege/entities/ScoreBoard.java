@@ -1,21 +1,22 @@
 package CelestialSiege.entities;
 
-import CelestialSiege.entities.text.ScoreText;
+import CelestialSiege.UI.UIGameScene;
+
 
 public class ScoreBoard {
-    private ScoreText scoreText;
+
+    private UIGameScene uiGameScene;
     private int totalPoints;
 
-    public ScoreBoard(ScoreText scoreText) {
+    public ScoreBoard(UIGameScene uiGameScene) {
         this.totalPoints = 0;
-        this.scoreText = scoreText;
-        scoreText.setScoreText(totalPoints);
+        this.uiGameScene = uiGameScene;
     }
 
     // Adds points to scoreboard & updates text
     public void addPoints(int points) {
         totalPoints += points;
-        scoreText.setScoreText(totalPoints);
+        uiGameScene.updateScoreText(totalPoints);
     }
 
     // TODO remove if remains unused

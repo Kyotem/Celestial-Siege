@@ -1,5 +1,6 @@
 package CelestialSiege.entities;
 
+import CelestialSiege.UI.UIGameScene;
 import CelestialSiege.entities.text.HealthText;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
@@ -15,14 +16,14 @@ import java.util.Set;
 
 public class Spaceship extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided, Collider {
 
-    private HealthText healthText; // TODO Move healthText to respective class, implement UI Classes.
+    private UIGameScene uiGameScene; // TODO Move healthText to respective class, implement UI Classes.
     private int playerHP = 3;
     private final int PLAYER_SPEED = 3;
 
-    public Spaceship(Coordinate2D location, HealthText healthText) {
+    public Spaceship(Coordinate2D location, UIGameScene uiGameScene) {
         super("sprites/SpaceShip.png", location, new Size(80, 40));
-        this.healthText = healthText;
-        healthText.setHealthText(playerHP);
+        this.uiGameScene = uiGameScene;
+//        healthText.setHealthText(playerHP); FIXME
         setFrictionConstant(0.05);
         setGravityConstant(0);
     }

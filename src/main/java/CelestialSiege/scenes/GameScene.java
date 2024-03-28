@@ -9,8 +9,7 @@ import CelestialSiege.entities.ScoreBoard;
 import CelestialSiege.entities.Spaceship;
 
 import CelestialSiege.entities.map.ShieldTileMap;
-import CelestialSiege.entities.text.HealthText;
-import CelestialSiege.entities.text.ScoreText;
+
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
@@ -46,21 +45,20 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
     public void setupEntities() {
 
 
-        UIGameScene uiGameScene = new UIGameScene(new Coordinate2D(0,0));
+
+        UIGameScene uiGameScene = new UIGameScene(new Coordinate2D(0,0), this);
         addEntity(uiGameScene);
 
-        scoreBoard = new ScoreBoard(scoreText);
+        scoreBoard = new ScoreBoard(uiGameScene);
 
-        spaceship = new Spaceship(new Coordinate2D(349, 550), healthText);
+
+        spaceship = new Spaceship(new Coordinate2D(349, 550), uiGameScene);
 
         alienManager = new AlienManager(new Coordinate2D(100, 0), scoreBoard);
 
         addEntity(alienManager);
         addEntity(spaceship);
 
-
-        PauseButton pauseButton = new PauseButton(new Coordinate2D(550, 650), this);
-        addEntity(pauseButton);
 
     }
 
