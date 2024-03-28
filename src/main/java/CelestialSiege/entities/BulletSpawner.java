@@ -9,7 +9,6 @@ public class BulletSpawner extends EntitySpawner {
 
     // TODO Resolve height spawn issue when spawning bullets under aliens (CompositEntity doesn't seem to rescale, see 1.1 @ spawnBulletFromAlienIfNeeded() )
     private final Spaceship spaceship;
-
     private final AlienManager alienManager;
     private final Random random;
     private int alienBulletSpawnCounter = 1; // Used to determine @ which interval the aliens should be able to shoot a bullet
