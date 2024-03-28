@@ -108,7 +108,4 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
 
     }
 
-
-
-
 }

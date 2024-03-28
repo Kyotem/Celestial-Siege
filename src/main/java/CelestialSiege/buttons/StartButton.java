@@ -12,7 +12,6 @@ public class StartButton extends Button {
 
         this.celestialSiege = celestialSiege;
     }
-
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         celestialSiege.setActiveScene(1);
