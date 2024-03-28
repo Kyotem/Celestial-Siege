@@ -7,14 +7,22 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+/* Unsure how to fix at this point in time, but timer bug explained:
+    When GWU's are paused, timers themselves are not paused.
+    This results in features that make use of a timer can technically "bypass" their timer state during the pause screen.
+    Example of how it works normally: Ship shoots laser... 1000ms pass ... Ship shoots another laser
+    Example of the issue: Ship shoots laser... Game paused... 1000ms (or more) pass... Game unpaused... 2 lasers fired in close proximity.
+*/
+
 public class PauseButton extends Button implements MouseButtonPressedListener {
     private GameScene gameScene;
 
     private boolean isGamePaused = false;
+    private final int BUTTON_SIZE = 50;
 
     public PauseButton(Coordinate2D initialLocation, GameScene gameScene) {
         super(initialLocation, "Pause");
-        setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 50));
+        setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, BUTTON_SIZE));
         this.gameScene = gameScene;
     }
 
