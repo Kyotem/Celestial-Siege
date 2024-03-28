@@ -8,7 +8,7 @@ public class ExitButton extends Button {
     private CelestialSiege celestialSiege;
 
     public ExitButton(Coordinate2D initialLocation, CelestialSiege celestialSiege) {
-        super(initialLocation, "Spel Verlaten");
+        super(initialLocation, "Exit Game");
         this.celestialSiege = celestialSiege;
     }
 
