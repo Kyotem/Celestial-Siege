@@ -12,6 +12,8 @@ public class StartButton extends Button {
 
         this.celestialSiege = celestialSiege;
     }
+
+    // Method called when button is pressed -> Sets active scene to the main gamescene
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         celestialSiege.setActiveScene(1);

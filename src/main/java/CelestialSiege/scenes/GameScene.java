@@ -22,7 +22,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
     private CelestialSiege celestialSiege;
 
-    private boolean gamePaused = false;
+
     private PauseButton pauseButton;
 
     private AlienManager alienManager;
@@ -62,7 +62,6 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
         PauseButton pauseButton = new PauseButton(new Coordinate2D(550, 650), this);
         addEntity(pauseButton);
-       pauseButton.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 50));
 
     }
 
@@ -80,15 +79,5 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
     public void setupTileMaps() {
         addTileMap(new ShieldTileMap());
     }
-    public void pauseResumeGWU() {
-        if (!gamePaused) {
-            pause();
-            //pauseButton.setResumeTextText();
-            gamePaused = true;
-        } else {
-            resume();
-            //pauseButton.setPauseText();
-            gamePaused = false;
-        }
-    }
+
 }
