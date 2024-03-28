@@ -22,8 +22,14 @@ public class Bullet extends DynamicSpriteEntity implements Collider, Collided, S
     }
 
     @Override
-    public void onCollision(List<Collider> list) {
-
+    public void onCollision(List<Collider> colliders) {
+        for (Collider collider : colliders) {
+            if (collider instanceof Alien) {
+                // Remove the bullet when it collides with an alien
+                remove();
+                return; // Exit the loop after removing the bullet
+            }
+        }
     }
 
     @Override
