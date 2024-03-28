@@ -12,11 +12,9 @@ import java.util.List;
 //  Parse Score through to Scoreborad class
 //  add loss condition (aliens pass certain y point)
 
-
 public class Alien extends DynamicSpriteEntity implements Collided, Collider {
 
-    AlienManager alienManager;
-    // Use on later date for handling arraylist access
+    private AlienManager alienManager;
   
     private ScoreBoard scoreboard; // Add a scoreboard field (Refactor later)
   
@@ -33,42 +31,29 @@ public class Alien extends DynamicSpriteEntity implements Collided, Collider {
         this.alienManager = alienManager;
     }
 
-
-    // TODO Remove toString debug func
-    @Override
-    public String toString() {
-        return "Alien{" +
-                "alienManager=" + alienManager +
-                ", alienHP=" + alienHP +
-                ", scorePoints=" + scorePoints +
-                '}';
-    }
-
+    // Removes the entity (Alien) from the AlienManager's list & the currently active scene
     private void destroyAndGrantScore() {
 
         alienManager.removeAlien(this);
         remove();
         scoreboard.addPoints(scorePoints);
-        // Removes the entity from the AlienManager's list & currentscene
 
-        // TODO add func to send score to scoreboard
+
+        // FIXME Scoreboard interaction is broken
     }
-
-
-
 
     private void decreaseHP() {
         alienHP--;
     }
-
-    private boolean shouldDelete() {
+    private boolean shouldDestroy() {
         return alienHP <= 0;
     }
 
+    // Called when player collides with a bullet
     @Override
     public void onCollision(List<Collider> list) {
         decreaseHP();
-        if (shouldDelete()) {
+        if (shouldDestroy()) {
             destroyAndGrantScore();
         }
         // Decreases HP, then checks if it's under 0 to see if it should be deleted, then the function grants the score.
