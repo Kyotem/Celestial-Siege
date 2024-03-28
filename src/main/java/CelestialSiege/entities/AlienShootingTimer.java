@@ -1,7 +1,6 @@
 package CelestialSiege.entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.Timer;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 
 import java.util.Random;

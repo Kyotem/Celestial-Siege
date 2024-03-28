@@ -8,7 +8,6 @@ import CelestialSiege.entities.BulletContainer;
 import CelestialSiege.entities.map.ShieldTileMap;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
-import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 
 import com.github.hanyaeger.api.scenes.TileMapContainer;

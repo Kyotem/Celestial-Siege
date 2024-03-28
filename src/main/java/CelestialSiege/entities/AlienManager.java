@@ -8,8 +8,6 @@ import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 // TODO
 //  Adjust alienSpeed & MOVEMENT_STEP based on in-game balance
