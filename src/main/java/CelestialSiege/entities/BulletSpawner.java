@@ -21,7 +21,6 @@ public class BulletSpawner extends EntitySpawner {
         this.alienManager = alienManager;
         this.random = new Random();
 
-        System.out.println("BulletSpawner created");
     }
 
     @Override
@@ -41,11 +40,10 @@ public class BulletSpawner extends EntitySpawner {
         spawn(bullet);
     }
 
-    private void spawnBulletFromAlienIfNeeded() {
+    private void spawnBulletFromAlienIfNeeded() { // Change method if possible
         if (alienBulletSpawnCounter == 2) {
 
-            if (random.nextDouble() < 0.5) { // Adjust the probability as needed
-                System.out.println("Alien Shot");
+            if (random.nextDouble() < 0.5) {
                 double randomPos = alienManager.getXPosition() + random.nextDouble() * (700 - alienManager.getXPosition());
                 Bullet bullet = new Bullet(
                         new Coordinate2D(

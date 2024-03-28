@@ -2,6 +2,8 @@ package CelestialSiege.entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.entities.Collided;
+import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Newtonian;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
@@ -9,9 +11,10 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 
+import java.util.List;
 import java.util.Set;
 
-public class Spaceship extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian {
+public class Spaceship extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided, Collider {
 
     public Spaceship(Coordinate2D location) {
         super("sprites/SpaceShip.png", location, new Size(80, 40));
@@ -45,5 +48,11 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onCollision(List<Collider> list) {
+        System.out.println("Spaceship got hit");
+        // Implement HP Decrease here
     }
 }
