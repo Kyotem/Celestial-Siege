@@ -14,6 +14,9 @@ import java.util.ArrayList;
 //  Change speed based on how many aliens are left
 //  Add respawn mechanism
 
+// FIXME
+//  Resolve issue where if aliens from the leftmost row pushes the boundingboxes to the right by STEP_SIZE
+
 public class AlienManager extends DynamicCompositeEntity implements SceneBorderTouchingWatcher {
 
     private ArrayList<Alien> aliens;
