@@ -4,12 +4,17 @@ import CelestialSiege.scenes.GameScene;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import javafx.scene.input.MouseButton;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class PauseButton extends Button implements MouseButtonPressedListener {
-    private GameScene gameScene; // Reference to the containing scene
+    private GameScene gameScene;
+
+    private boolean isGamePaused = false;
 
     public PauseButton(Coordinate2D initialLocation, GameScene gameScene) {
         super(initialLocation, "Pause");
+        setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 50));
         this.gameScene = gameScene;
     }
 
@@ -17,16 +22,17 @@ public class PauseButton extends Button implements MouseButtonPressedListener {
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         updateButtonText();
-        gameScene.pauseResumeGWU();
-
+        toggleGameState();
     }
 
     // Toggle the game state between paused and resumed
-    private void pauseResumeGWU() {
-        if (gameScene.isActiveGWU()) {
+    private void toggleGameState() {
+        if (!isGamePaused) {
             gameScene.pause();
+            isGamePaused = true;
         } else {
             gameScene.resume();
+            isGamePaused = false;
         }
     }
 
