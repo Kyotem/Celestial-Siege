@@ -2,6 +2,8 @@ package CelestialSiege.entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.entities.Collided;
+import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Newtonian;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
@@ -9,9 +11,13 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 
+import java.util.List;
 import java.util.Set;
 
-public class Spaceship extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian {
+public class Spaceship extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided, Collider {
+
+
+    private int playerHP = 3;
 
     public Spaceship(Coordinate2D location) {
         super("sprites/SpaceShip.png", location, new Size(80, 40));
@@ -27,12 +33,6 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
             setMotion(3, 90d);
         }
     }
-
-
-    @Override
-    public void setCurrentFrameIndex(int index) {
-    }
-
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
         setSpeed(0);
@@ -46,4 +46,32 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
                 break;
         }
     }
+
+    @Override
+    public void onCollision(List<Collider> list) {
+        System.out.println("Spaceship got hit");
+        playerHP--;
+        // Logic to decrease HP visualizer? Or does HP UI update based on the value?
+        handleLoss();
+    }
+
+    private void handleLoss() {
+        if (isDead()) {
+            System.out.println("Lost Game");
+            // Logic here to change scene to endscreen
+        }
+    }
+
+    private boolean isDead() {
+        return playerHP <= 0;
+    }
+
+    public int getPlayerHP() {
+        return playerHP;
+    }
+
+    public void setPlayerHP(int newPlayerHP) {
+        playerHP = newPlayerHP;
+    }
+
 }
