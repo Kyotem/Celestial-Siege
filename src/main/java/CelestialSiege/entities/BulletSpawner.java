@@ -16,7 +16,7 @@ public class BulletSpawner extends EntitySpawner {
     private final int SPACESHIP_OFFSET = 60;
     private final int ALIEN_OFFSET = 30;
     private final int ALIEN_INTERVAL = 2; // TODO Rename
-    private double alienShootChance = 0.5;
+    private double alienShootChance = 0.5; // Might be changed based on difficulty, don't make it final yet
 
     public BulletSpawner(long intervalInMs, Spaceship spaceship, AlienManager alienManager) {
         super(intervalInMs);
@@ -47,7 +47,7 @@ public class BulletSpawner extends EntitySpawner {
     // TODO
     //  1.1 CompositeEntity doesn't seem to rescale vertically, bullets shoot too low compared to aliens.
     private void spawnBulletFromAlienIfNeeded() {
-        if (alienBulletSpawnCounter == ALIEN_OFFSET) {
+        if (alienBulletSpawnCounter == ALIEN_INTERVAL) {
             double rolledNum = random.nextDouble();
             if (rolledNum < alienShootChance) {
                 double randomPos = alienManager.getXPosition() + random.nextDouble() * (700 - alienManager.getXPosition());
