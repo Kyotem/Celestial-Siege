@@ -1,9 +1,7 @@
 package CelestialSiege.scenes;
 
 import CelestialSiege.CelestialSiege;
-import CelestialSiege.entities.AlienManager;
-import CelestialSiege.entities.Spaceship;
-import CelestialSiege.entities.BulletContainer;
+import CelestialSiege.entities.*;
 import CelestialSiege.entities.map.ShieldTileMap;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
@@ -11,9 +9,10 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 
-public class GameScene extends DynamicScene implements TileMapContainer, EntitySpawnerContainer {
+public class GameScene extends DynamicScene implements TileMapContainer, EntitySpawnerContainer  {
 
     private CelestialSiege celestialSiege;
+    private AlienManager alienManager;
 
     private Spaceship spaceship;
 
@@ -31,7 +30,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
     @Override
     public void setupEntities() {
         spaceship = new Spaceship(new Coordinate2D(349, 550));
-        AlienManager alienManager = new AlienManager(new Coordinate2D(100, 0));
+        alienManager = new AlienManager(new Coordinate2D(100, 0));
 
         addEntity(alienManager);
         addEntity(spaceship);
@@ -40,8 +39,9 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
     @Override
     public void setupEntitySpawners() {
-        BulletContainer bulletContainer = new BulletContainer(4000, spaceship);
-        addEntitySpawner(bulletContainer);
+        BulletSpawner bulletSpawner = new BulletSpawner(800, spaceship, alienManager);
+        addEntitySpawner(bulletSpawner);
+
         // textSpawner = new TextSpawner(700, getWidth(), getHeight());
         //addEntitySpawner(textSpawner);
     }
@@ -51,6 +51,5 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
     public void setupTileMaps() {
         addTileMap(new ShieldTileMap());
     }
-
 
 }

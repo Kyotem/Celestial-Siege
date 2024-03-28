@@ -12,7 +12,7 @@ import java.util.List;
 //  Parse Score through to Scoreborad class
 //  add loss condition (aliens pass certain y point)
 
-public class Alien extends DynamicSpriteEntity implements Collided {
+public class Alien extends DynamicSpriteEntity implements Collided, Collider {
 
     AlienManager alienManager;
     // Use on later date for handling arraylist access
