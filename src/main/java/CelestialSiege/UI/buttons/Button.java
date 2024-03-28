@@ -1,4 +1,4 @@
-package CelestialSiege.buttons;
+package CelestialSiege.UI.buttons;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;

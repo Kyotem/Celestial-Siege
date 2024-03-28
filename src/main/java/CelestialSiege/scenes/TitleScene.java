@@ -2,8 +2,9 @@ package CelestialSiege.scenes;
 
 import CelestialSiege.CelestialSiege;
 
-import CelestialSiege.buttons.ExitButton;
-import CelestialSiege.buttons.StartButton;
+import CelestialSiege.UI.UIStartMenu;
+import CelestialSiege.UI.buttons.ExitButton;
+import CelestialSiege.UI.buttons.StartButton;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
@@ -32,16 +33,18 @@ public class TitleScene extends StaticScene implements KeyListener {
 
     @Override
     public void setupEntities() {
-        var CelestialSiegeText = new TextEntity(
-                new Coordinate2D(getWidth() / 2, getHeight() * 0.20),
-                "Celestial Siege"
-        );
-        CelestialSiegeText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        CelestialSiegeText.setFill(Color.WHITE);
-        CelestialSiegeText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
+//        var CelestialSiegeText = new TextEntity(
+//                new Coordinate2D(getWidth() / 2, getHeight() * 0.20),
+//                "Celestial Siege"
+//        );
+//        CelestialSiegeText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+//        CelestialSiegeText.setFill(Color.WHITE);
+//        CelestialSiegeText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
+//
+//        addEntity(CelestialSiegeText);
 
-        addEntity(CelestialSiegeText);
-
+        UIStartMenu uiStartMenu = new UIStartMenu(new Coordinate2D(0,0), this);
+        addEntity(uiStartMenu);
         // TODO Fix Ypos being hardcoded for buttons, use standard offset
         StartButton startButton = new StartButton(
                 new Coordinate2D(getWidth() / 2, getHeight() * 0.5), celestialSiege);

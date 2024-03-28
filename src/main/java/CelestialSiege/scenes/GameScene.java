@@ -1,7 +1,7 @@
 package CelestialSiege.scenes;
 
 import CelestialSiege.CelestialSiege;
-import CelestialSiege.buttons.PauseButton;
+import CelestialSiege.UI.buttons.PauseButton;
 import CelestialSiege.entities.AlienManager;
 import CelestialSiege.entities.BulletSpawner;
 import CelestialSiege.entities.ScoreBoard;
@@ -15,8 +15,6 @@ import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 
 import com.github.hanyaeger.api.scenes.TileMapContainer;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
 public class GameScene extends DynamicScene implements TileMapContainer, EntitySpawnerContainer  {
 

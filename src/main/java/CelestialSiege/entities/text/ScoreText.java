@@ -13,5 +13,7 @@ public class ScoreText extends TextEntity {
         setFill(Color.YELLOW);
     }
 
-    public void setScoreText(int totalPoints){setText("Total points: " + totalPoints);}
+    public void setScoreText(int totalPoints){
+        setText("Total points: " + totalPoints);
+    }
 }
