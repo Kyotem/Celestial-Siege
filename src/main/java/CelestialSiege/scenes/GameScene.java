@@ -5,25 +5,34 @@ import CelestialSiege.buttons.PauseButton;
 import CelestialSiege.entities.AlienManager;
 import CelestialSiege.entities.ScoreBoard;
 import CelestialSiege.entities.Spaceship;
+
 import CelestialSiege.entities.map.ShieldTileMap;
 import CelestialSiege.entities.text.HealthText;
 import CelestialSiege.entities.text.ScoreText;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
+
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class GameScene extends DynamicScene implements TileMapContainer, EntitySpawnerContainer {
+public class GameScene extends DynamicScene implements TileMapContainer, EntitySpawnerContainer  {
 
     private CelestialSiege celestialSiege;
+
     private boolean gamePaused = false;
     private PauseButton pauseButton;
+
+    private AlienManager alienManager;
+
+    private Spaceship spaceship;
+
 
     public GameScene(CelestialSiege celestialSiege) {
         this.celestialSiege = celestialSiege;
     }
+
 
     @Override
     public void setupScene() {
@@ -42,14 +51,25 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
         Spaceship spaceship = new Spaceship(new Coordinate2D(349, 550), healthText);
 
-        AlienManager alienManager = new AlienManager(new Coordinate2D(50, 0));
+        alienManager = new AlienManager(new Coordinate2D(100, 0));
+
         addEntity(alienManager);
         addEntity(spaceship);
+
 
         PauseButton pauseButton = new PauseButton(new Coordinate2D(550, 650), this);
         addEntity(pauseButton);
        pauseButton.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 50));
 
+    }
+
+    @Override
+    public void setupEntitySpawners() {
+        BulletSpawner bulletSpawner = new BulletSpawner(800, spaceship, alienManager);
+        addEntitySpawner(bulletSpawner);
+
+        // textSpawner = new TextSpawner(700, getWidth(), getHeight());
+        //addEntitySpawner(textSpawner);
     }
 
     @Override
@@ -66,10 +86,5 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
             //pauseButton.setPauseText();
             gamePaused = false;
         }
-    }
-
-    @Override
-    public void setupEntitySpawners() {
-
     }
 }
