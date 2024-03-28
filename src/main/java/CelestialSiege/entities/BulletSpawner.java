@@ -7,6 +7,9 @@ import java.util.Random;
 
 public class BulletSpawner extends EntitySpawner {
 
+
+    // TODO Resolve height spawn issue (Base on compentity / aliens?)
+
     private final Spaceship spaceship;
     private final AlienManager alienManager;
     private final Random random;
