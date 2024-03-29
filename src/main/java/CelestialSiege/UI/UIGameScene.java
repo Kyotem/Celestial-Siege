@@ -26,7 +26,8 @@ public class UIGameScene extends UIComponent {
 
     // TODO Fix hardcoded position values, create common constants
     // FIXME Fix overlapping issues with update-able UI Elements
-    private void createTextEntities() {
+    @Override
+    protected void createTextEntities() {
         healthText = new CustomTextEntity(new Coordinate2D(20, 610),
                 "Health: ", AnchorPoint.TOP_LEFT, "Roboto", FontWeight.BOLD, 30, Color.YELLOW
         );
@@ -38,10 +39,10 @@ public class UIGameScene extends UIComponent {
 
     }
 
-    private void createButtonEntities() {
+    @Override
+    protected void createButtonEntities() {
         PauseButton pauseButton = new PauseButton(new Coordinate2D(550, 650), gameScene);
         addEntity(pauseButton);
-
     }
 
     public void updateScoreText(int score) {

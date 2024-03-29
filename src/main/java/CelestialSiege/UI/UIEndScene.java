@@ -27,7 +27,9 @@ public class UIEndScene extends UIComponent {
         createButtonEntities();
     }
 
-    private void createTextEntities() {
+
+    @Override
+    protected void createTextEntities() {
 
         CustomTextEntity gameOverText = new CustomTextEntity(new Coordinate2D(
                 endScene.getWidth() / 2, endScene.getHeight() * 0.15),
@@ -45,7 +47,8 @@ public class UIEndScene extends UIComponent {
         addEntity(scoreText);
     }
 
-    private void createButtonEntities() {
+    @Override
+    protected void createButtonEntities() {
 
         ExitButton exitButton = new ExitButton(
                 new Coordinate2D(
@@ -57,5 +60,6 @@ public class UIEndScene extends UIComponent {
         addEntity(exitButton);
         addEntity(menuButton);
     }
+
 
 }

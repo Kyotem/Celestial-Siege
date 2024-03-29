@@ -5,7 +5,7 @@ import CelestialSiege.UI.UIGameScene;
 
 public class ScoreBoard {
 
-    private UIGameScene uiGameScene;
+    private final UIGameScene uiGameScene;
     private int totalPoints;
 
     public ScoreBoard(UIGameScene uiGameScene) {
@@ -20,6 +20,7 @@ public class ScoreBoard {
     }
 
     // TODO remove if remains unused
+    // Might require this to save points in var to pass to another scene.
     public int getTotalPoints() {
         return totalPoints;
     }

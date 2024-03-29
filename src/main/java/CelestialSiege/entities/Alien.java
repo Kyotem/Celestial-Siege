@@ -14,11 +14,10 @@ import java.util.List;
 
 public class Alien extends DynamicSpriteEntity implements Collided, Collider {
 
-    private AlienManager alienManager;
-  
+    private final AlienManager alienManager;
 
     private int alienHP;
-    private int scorePoints = 0;
+    private int scorePoints;
 
     public Alien(String sprite, Coordinate2D initialLocation, int alienHP, AlienManager alienManager) {
         super(sprite, initialLocation, new Size(40, 40));
@@ -34,7 +33,6 @@ public class Alien extends DynamicSpriteEntity implements Collided, Collider {
 
     // Removes the entity (Alien) from the AlienManager's list & the currently active scene
     private void destroy() {
-        alienManager.removeAlien(this);
         remove();
     }
 

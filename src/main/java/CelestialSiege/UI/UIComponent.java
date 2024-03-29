@@ -11,20 +11,19 @@ public abstract class UIComponent extends CompositeEntity {
     }
 
     protected void setupEntities() {
-
+        createTextEntities();
+        createButtonEntities();
     }
 
-    private void createTextEntities() {
+    // Method to initialize text entities
+    protected abstract void createTextEntities();
 
-    }
+    // Method to initialize button entities
+    protected abstract void createButtonEntities();
 
-    private void createButtonEntities() {
-
-    }
-
+    // Method to update text entities if needed
     public void updateText() {
 
     }
-
 
 }
