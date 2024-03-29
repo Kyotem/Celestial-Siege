@@ -45,11 +45,6 @@ public class UIGameScene extends UIComponent {
         addEntity(pauseButton);
     }
 
-    @Override
-    public void updateText() {
-
-    }
-
     public void updateScoreText(int score) {
         scoreText.setText("Score: " + score);
     }
