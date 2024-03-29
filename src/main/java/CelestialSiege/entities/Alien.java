@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Alien extends DynamicSpriteEntity implements Collided, Collider {
 
-    private final AlienManager alienManager;
+    private final AlienManager ALIENMANAGER;
 
     private int alienHP;
     private int scorePoints;
@@ -24,7 +24,7 @@ public class Alien extends DynamicSpriteEntity implements Collided, Collider {
         this.alienHP = alienHP;
         scorePoints = alienHP * 100;
 
-        this.alienManager = alienManager;
+        this.ALIENMANAGER = alienManager;
     }
 
     private void decreaseHP() {
@@ -38,7 +38,7 @@ public class Alien extends DynamicSpriteEntity implements Collided, Collider {
 
     // Adds points from this instance to the scoreboard
     private void grantScore() {
-        alienManager.grantScore(scorePoints);
+        ALIENMANAGER.grantScore(scorePoints);
     }
     private boolean shouldDestroy() {
         return alienHP <= 0;

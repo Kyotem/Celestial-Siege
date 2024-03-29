@@ -14,9 +14,9 @@ import java.util.Random;
 public class BulletSpawner extends EntitySpawner {
 
     // TODO Resolve height spawn issue when spawning bullets under aliens (CompositEntity doesn't seem to rescale, see 1.1 @ spawnBulletFromAlienIfNeeded() )
-    private final Spaceship spaceship;
-    private final AlienManager alienManager;
-    private final Random random;
+    private final Spaceship SPACESHIP;
+    private final AlienManager ALIENMANAGER;
+    private final Random RANDOM;
     private int alienBulletSpawnCounter = 1; // Used to determine @ which interval the aliens should be able to shoot a bullet
 
     private final int SPACESHIP_OFFSET = 60;
@@ -26,9 +26,9 @@ public class BulletSpawner extends EntitySpawner {
 
     public BulletSpawner(long intervalInMs, Spaceship spaceship, AlienManager alienManager) {
         super(intervalInMs);
-        this.spaceship = spaceship;
-        this.alienManager = alienManager;
-        this.random = new Random();
+        this.SPACESHIP = spaceship;
+        this.ALIENMANAGER = alienManager;
+        this.RANDOM = new Random();
     }
 
     @Override
@@ -41,8 +41,8 @@ public class BulletSpawner extends EntitySpawner {
     private void spawnBulletAboveSpaceship() {
         Bullet bullet = new Bullet(
                 new Coordinate2D(
-                        spaceship.getAnchorLocation().getX(),
-                        spaceship.getAnchorLocation().getY() - SPACESHIP_OFFSET),
+                        SPACESHIP.getAnchorLocation().getX(),
+                        SPACESHIP.getAnchorLocation().getY() - SPACESHIP_OFFSET),
                 2,
                 180
         );
@@ -52,14 +52,14 @@ public class BulletSpawner extends EntitySpawner {
     // Spawns a bullet under the CompositeEntity AlienManager
     private void spawnBulletFromAlienIfNeeded() {
         if (alienBulletSpawnCounter == ALIEN_INTERVAL) {
-            double rolledNum = random.nextDouble();
+            double rolledNum = RANDOM.nextDouble();
             if (rolledNum < alienShootChance) {
-                double randomPos = alienManager.getXPosition() + random.nextDouble() * (700 - alienManager.getXPosition());
+                double randomPos = ALIENMANAGER.getXPosition() + RANDOM.nextDouble() * (700 - ALIENMANAGER.getXPosition());
                 Bullet bullet = new Bullet(
                         new Coordinate2D(
                                 randomPos, // TODO Fix this hack calculation
                                 // Random x-coordinate between alienManager.getXPosition() and 700 (Sceneborder)
-                                alienManager.getYPosition() + ALIEN_OFFSET),
+                                ALIENMANAGER.getYPosition() + ALIEN_OFFSET),
                         2,
                         0
                 );

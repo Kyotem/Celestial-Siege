@@ -18,7 +18,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
 
 
     private Direction currentDirection = Direction.RIGHT;
-    private final ScoreBoard scoreboard;
+    private final ScoreBoard SCOREBOARD;
 
     private int alienSpeed = 2;
     private final int TOTAL_COLUMNS = 10;
@@ -28,7 +28,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
 
     public AlienManager(Coordinate2D initialLocation, ScoreBoard scoreboard) {
         super(initialLocation);
-        this.scoreboard = scoreboard;
+        this.SCOREBOARD = scoreboard;
         setAnchorPoint(AnchorPoint.BOTTOM_LEFT);
     }
 
@@ -103,7 +103,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     }
 
     public void grantScore(int scorePoints) {
-        scoreboard.addPoints(scorePoints);
+        SCOREBOARD.addPoints(scorePoints);
     }
 
 
