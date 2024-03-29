@@ -2,7 +2,6 @@ package CelestialSiege.scenes;
 
 import CelestialSiege.CelestialSiege;
 import CelestialSiege.UI.UIGameScene;
-import CelestialSiege.UI.buttons.PauseButton;
 import CelestialSiege.entities.AlienManager;
 import CelestialSiege.entities.BulletSpawner;
 import CelestialSiege.entities.ScoreBoard;
@@ -18,9 +17,7 @@ import com.github.hanyaeger.api.scenes.TileMapContainer;
 
 public class GameScene extends DynamicScene implements TileMapContainer, EntitySpawnerContainer  {
 
-    private CelestialSiege celestialSiege;
-
-    private PauseButton pauseButton;
+    private final CelestialSiege celestialSiege;
 
     private AlienManager alienManager;
 

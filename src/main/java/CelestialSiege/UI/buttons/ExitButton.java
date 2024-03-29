@@ -5,7 +5,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import javafx.scene.input.MouseButton;
 
 public class ExitButton extends Button {
-    private CelestialSiege celestialSiege;
+    private final CelestialSiege celestialSiege;
 
     public ExitButton(Coordinate2D initialLocation, CelestialSiege celestialSiege) {
         super(initialLocation, "Exit Game");

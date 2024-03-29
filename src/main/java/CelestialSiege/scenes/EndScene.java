@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 public class EndScene extends StaticScene {
 
-    private CelestialSiege celestialSiege;
+    private final CelestialSiege celestialSiege;
 
     public EndScene(CelestialSiege celestialSiege) {
         this.celestialSiege = celestialSiege;
