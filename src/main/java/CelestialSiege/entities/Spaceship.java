@@ -1,7 +1,6 @@
 package CelestialSiege.entities;
 
 import CelestialSiege.CelestialSiege;
-import CelestialSiege.UI.UIEndScene;
 import CelestialSiege.UI.UIGameScene;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
@@ -17,8 +16,8 @@ import java.util.Set;
 
 public class Spaceship extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided, Collider {
 
-    CelestialSiege celestialSiege;
-    private UIGameScene uiGameScene;
+    private final CelestialSiege celestialSiege;
+    private final UIGameScene uiGameScene;
     private int playerHP = 3;
     private final int PLAYER_SPEED = 3;
 
@@ -72,14 +71,6 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
 
     private boolean isDead() {
         return playerHP <= 0;
-    }
-
-    public int getPlayerHP() {
-        return playerHP;
-    }
-
-    public void setPlayerHP(int newPlayerHP) {
-        playerHP = newPlayerHP;
     }
 
 }
