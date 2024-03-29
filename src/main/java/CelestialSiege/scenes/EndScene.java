@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 public class EndScene extends StaticScene {
 
-    private CelestialSiege celestialSiege;
+    private final CelestialSiege celestialSiege;
 
     public EndScene(CelestialSiege celestialSiege) {
         this.celestialSiege = celestialSiege;
@@ -16,7 +16,7 @@ public class EndScene extends StaticScene {
 
     @Override
     public void setupScene() {
-        setBackgroundAudio("audio/loseMusic.mp3");
+        setBackgroundAudio("audio/GameOverMusic.mp3");
         setBackgroundColor(Color.BLACK);
     }
 

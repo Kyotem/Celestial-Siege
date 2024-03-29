@@ -11,7 +11,7 @@ import javafx.scene.text.FontWeight;
     When GWU's are paused, timers themselves are not paused.
     This results in features that make use of a timer can technically "bypass" their timer state during the pause screen.
     Example of how it works normally: Ship shoots laser... 1000ms pass ... Ship shoots another laser
-    Example of the issue: Ship shoots laser... Game paused... 1000ms (or more) pass... Game unpaused... 2 lasers fired in close proximity.
+    Example of the issue: Ship shoots laser... Game paused... 1000ms (or more) pass... Game unpaused... 2 lasers fired in proximity.
 */
 
 public class PauseButton extends Button implements MouseButtonPressedListener {
@@ -30,7 +30,7 @@ public class PauseButton extends Button implements MouseButtonPressedListener {
     // Method called when button is pressed -> toggles pause state & buttontext
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-//        updateButtonText(); Temp disable due to overlap issues
+//        updateButtonText(); Disabled due to overlap issues, re-enable when fixed
         toggleGameState();
     }
 

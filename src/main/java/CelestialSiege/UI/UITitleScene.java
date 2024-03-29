@@ -31,7 +31,8 @@ public class UITitleScene extends UIComponent {
     }
 
     // Method used to initialise all Text entities
-    private void createTextEntities() {
+    @Override
+    protected void createTextEntities() {
         CustomTextEntity titleText = new CustomTextEntity(
                 new Coordinate2D(titleScene.getWidth() / 2, titleScene.getHeight() * 0.20),
                 "Celestial Siege",
@@ -41,7 +42,8 @@ public class UITitleScene extends UIComponent {
     }
 
     // Method used to initialise all Button entities
-    private void createButtonEntities() {
+    @Override
+    protected void createButtonEntities() {
         StartButton startButton = new StartButton(new Coordinate2D(
                 titleScene.getWidth() / 2, titleScene.getHeight() * 0.5), celestialSiege);
 

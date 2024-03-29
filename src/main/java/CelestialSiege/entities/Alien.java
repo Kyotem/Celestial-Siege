@@ -14,11 +14,10 @@ import java.util.List;
 
 public class Alien extends DynamicSpriteEntity implements Collided, Collider {
 
-    private AlienManager alienManager;
-  
+    private final AlienManager alienManager;
 
     private int alienHP;
-    private int scorePoints = 0;
+    private int scorePoints;
 
     // Will change based on speed of main Alienclass TODO edit this later
 
@@ -36,7 +35,6 @@ public class Alien extends DynamicSpriteEntity implements Collided, Collider {
 
     // Removes the entity (Alien) from the AlienManager's list & the currently active scene
     private void destroy() {
-        alienManager.removeAlien(this);
         remove();
     }
 

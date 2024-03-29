@@ -7,8 +7,6 @@ import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 
-import java.util.ArrayList;
-
 // TODO
 //  Adjust alienSpeed & MOVEMENT_STEP based on in-game balance
 //  Change speed based on how many aliens are left
@@ -19,9 +17,9 @@ import java.util.ArrayList;
 
 public class AlienManager extends DynamicCompositeEntity implements SceneBorderTouchingWatcher {
 
-    private ArrayList<Alien> aliens;
+
     private Direction currentDirection = Direction.RIGHT;
-    private ScoreBoard scoreboard;
+    private final ScoreBoard scoreboard;
 
     private int alienSpeed = 2;
     private final int TOTAL_COLUMNS = 10;
@@ -33,16 +31,14 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
         super(initialLocation);
         this.scoreboard = scoreboard;
         setAnchorPoint(AnchorPoint.BOTTOM_LEFT);
-        aliens = new ArrayList<>();
     }
 
     @Override
     protected void setupEntities() {
 
-        aliens.clear();
-        setupAlien(0, 1, 3, "sprites/aliens/Alien1.png");
-        setupAlien(50, 2, 2, "sprites/aliens/Alien2.png");
-        setupAlien(150, 2, 1, "sprites/aliens/Alien3.png");
+        setupAlien(0, 1, 3, "sprites/aliens/StrongAlien.png");
+        setupAlien(50, 2, 2, "sprites/aliens/NormalAlien.png");
+        setupAlien(150, 2, 1, "sprites/aliens/WeakAlien.png");
         setMotion(alienSpeed, currentDirection);
 
     }
@@ -104,15 +100,7 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
 
     // Add the aliens to the scene
     private void addAlien(Alien alien) {
-        aliens.add(alien);
         addEntity(alien);
-    }
-
-    // TODO remove feature if arrayList remains unused / removed
-    // Remove the alien from the list
-    public void removeAlien(Alien alien) {
-        aliens.remove(alien);
-        // removeEntity() is called in the Alien class itself, not the manager.
     }
 
     public void grantScore(int scorePoints) {

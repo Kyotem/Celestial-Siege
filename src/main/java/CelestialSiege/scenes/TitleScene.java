@@ -20,8 +20,8 @@ public class TitleScene extends StaticScene implements KeyListener {
     // TODO Change resource names to be more descriptive
     @Override
     public void setupScene() {
-        setBackgroundAudio("audio/Audio1.mp3");
-        setBackgroundImage("backgrounds/background0.png");
+        setBackgroundAudio("audio/BackgroundAudio.mp3");
+        setBackgroundImage("backgrounds/TitleScreenBackground.png");
     }
 
     @Override
