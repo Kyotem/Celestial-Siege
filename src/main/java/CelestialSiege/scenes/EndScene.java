@@ -8,10 +8,10 @@ import javafx.scene.paint.Color;
 
 public class EndScene extends StaticScene {
 
-    private final CelestialSiege celestialSiege;
+    private final CelestialSiege CELESTIALSIEGE;
 
     public EndScene(CelestialSiege celestialSiege) {
-        this.celestialSiege = celestialSiege;
+        this.CELESTIALSIEGE = celestialSiege;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class EndScene extends StaticScene {
 
     @Override
     public void setupEntities() {
-        UIEndScene uiEndScene = new UIEndScene(new Coordinate2D(0,0), this, celestialSiege);
+        UIEndScene uiEndScene = new UIEndScene(new Coordinate2D(0,0), this, CELESTIALSIEGE);
         addEntity(uiEndScene);
     }
 }

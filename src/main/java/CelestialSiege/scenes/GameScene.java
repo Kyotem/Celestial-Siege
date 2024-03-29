@@ -17,7 +17,7 @@ import com.github.hanyaeger.api.scenes.TileMapContainer;
 
 public class GameScene extends DynamicScene implements TileMapContainer, EntitySpawnerContainer  {
 
-    private final CelestialSiege celestialSiege;
+    private final CelestialSiege CELESTIALSIEGE;
 
     private AlienManager alienManager;
 
@@ -26,9 +26,8 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
     private ScoreBoard scoreBoard;
 
     public GameScene(CelestialSiege celestialSiege) {
-        this.celestialSiege = celestialSiege;
+        this.CELESTIALSIEGE = celestialSiege;
     }
-
 
     @Override
     public void setupScene() {
@@ -43,7 +42,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
         scoreBoard = new ScoreBoard(uiGameScene);
 
-        spaceship = new Spaceship(new Coordinate2D(349, 550), uiGameScene, celestialSiege);
+        spaceship = new Spaceship(new Coordinate2D(349, 550), uiGameScene, CELESTIALSIEGE);
 
         alienManager = new AlienManager(new Coordinate2D(100, 0), scoreBoard);
 
