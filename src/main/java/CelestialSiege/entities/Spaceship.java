@@ -1,5 +1,6 @@
 package CelestialSiege.entities;
 
+import CelestialSiege.CelestialSiege;
 import CelestialSiege.UI.UIGameScene;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
@@ -15,13 +16,15 @@ import java.util.Set;
 
 public class Spaceship extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided, Collider {
 
+    CelestialSiege celestialSiege;
     private UIGameScene uiGameScene;
     private int playerHP = 3;
     private final int PLAYER_SPEED = 3;
 
-    public Spaceship(Coordinate2D location, UIGameScene uiGameScene) {
+    public Spaceship(Coordinate2D location, UIGameScene uiGameScene, CelestialSiege celestialSiege) {
         super("sprites/SpaceShip.png", location, new Size(80, 40));
         this.uiGameScene = uiGameScene;
+        this.celestialSiege = celestialSiege;
         setFrictionConstant(0.05);
         setGravityConstant(0);
     }
@@ -62,8 +65,7 @@ public class Spaceship extends DynamicSpriteEntity implements KeyListener, Scene
     // Checks if player is dead, if true, send user to endscreen
     private void checkForLoss() {
         if (isDead()) {
-            System.out.println("Lost Game"); // TODO Remove once implemented properly
-            // TODO Implement logic here to change scene to endscreen
+            celestialSiege.setActiveScene(2);
         }
     }
 

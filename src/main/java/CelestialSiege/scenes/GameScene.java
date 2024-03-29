@@ -47,7 +47,7 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
         scoreBoard = new ScoreBoard(uiGameScene);
 
-        spaceship = new Spaceship(new Coordinate2D(349, 550), uiGameScene);
+        spaceship = new Spaceship(new Coordinate2D(349, 550), uiGameScene, celestialSiege);
 
         alienManager = new AlienManager(new Coordinate2D(100, 0), scoreBoard);
 

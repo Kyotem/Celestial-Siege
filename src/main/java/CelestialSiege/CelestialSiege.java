@@ -1,5 +1,6 @@
 package CelestialSiege;
 
+import CelestialSiege.scenes.EndScene;
 import CelestialSiege.scenes.GameScene;
 import CelestialSiege.scenes.TitleScene;
 import com.github.hanyaeger.api.Size;
@@ -17,5 +18,6 @@ public class CelestialSiege extends YaegerGame {
     public void setupScenes() {
         addScene(0, new TitleScene(this));
         addScene(1, new GameScene(this));
+        addScene(2, new EndScene(this));
     }
 }
