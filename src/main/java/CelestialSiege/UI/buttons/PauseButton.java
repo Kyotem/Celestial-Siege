@@ -14,7 +14,7 @@ import javafx.scene.text.FontWeight;
     Example of the issue: Ship shoots laser... Game paused... 1000ms (or more) pass... Game unpaused... 2 lasers fired in close proximity.
 */
 
-public class PauseButton extends Button implements MouseButtonPressedListener {
+public class PauseButton extends Button {
     private final GameScene gameScene;
 
     private boolean isGamePaused = false;
