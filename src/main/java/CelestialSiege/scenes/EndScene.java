@@ -16,7 +16,7 @@ public class EndScene extends StaticScene {
 
     @Override
     public void setupScene() {
-        setBackgroundAudio("audio/loseMusic.mp3");
+        setBackgroundAudio("audio/GameOverMusic.mp3");
         setBackgroundColor(Color.BLACK);
     }
 

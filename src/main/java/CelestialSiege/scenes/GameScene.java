@@ -25,7 +25,6 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
     private ScoreBoard scoreBoard;
 
-
     public GameScene(CelestialSiege celestialSiege) {
         this.celestialSiege = celestialSiege;
     }
@@ -33,8 +32,8 @@ public class GameScene extends DynamicScene implements TileMapContainer, EntityS
 
     @Override
     public void setupScene() {
-        setBackgroundAudio("audio/Audio1.mp3");
-        setBackgroundImage("backgrounds/background1.jpg");
+        setBackgroundAudio("audio/BackgroundAudio.mp3");
+        setBackgroundImage("backgrounds/GameScreenBackground.jpg");
     }
 
     @Override

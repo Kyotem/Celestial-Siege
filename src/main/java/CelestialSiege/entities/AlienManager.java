@@ -36,9 +36,9 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
     @Override
     protected void setupEntities() {
 
-        setupAlien(0, 1, 3, "sprites/aliens/Alien1.png");
-        setupAlien(50, 2, 2, "sprites/aliens/Alien2.png");
-        setupAlien(150, 2, 1, "sprites/aliens/Alien3.png");
+        setupAlien(0, 1, 3, "sprites/aliens/StrongAlien.png");
+        setupAlien(50, 2, 2, "sprites/aliens/NormalAlien.png");
+        setupAlien(150, 2, 1, "sprites/aliens/WeakAlien.png");
         setMotion(alienSpeed, currentDirection);
 
     }
