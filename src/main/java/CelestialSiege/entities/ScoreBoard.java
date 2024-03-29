@@ -19,9 +19,4 @@ public class ScoreBoard {
         uiGameScene.updateScoreText(totalPoints);
     }
 
-    // TODO remove if remains unused
-    // Might require this to save points in var to pass to another scene.
-    public int getTotalPoints() {
-        return totalPoints;
-    }
 }

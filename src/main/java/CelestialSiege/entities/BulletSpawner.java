@@ -5,6 +5,12 @@ import com.github.hanyaeger.api.entities.EntitySpawner;
 
 import java.util.Random;
 
+/*
+    CompositeEntity (AlienManager) does not update it's dimensions vertically.
+    If bottom row of aliens is destroyed, the Y-Pos that bullets are spawned remain the same as in the start.
+    Not aware of a direct fix ATM
+ */
+
 public class BulletSpawner extends EntitySpawner {
 
     // TODO Resolve height spawn issue when spawning bullets under aliens (CompositEntity doesn't seem to rescale, see 1.1 @ spawnBulletFromAlienIfNeeded() )
@@ -15,8 +21,8 @@ public class BulletSpawner extends EntitySpawner {
 
     private final int SPACESHIP_OFFSET = 60;
     private final int ALIEN_OFFSET = 30;
-    private final int ALIEN_INTERVAL = 2; // TODO Rename
-    private double alienShootChance = 0.5; // Might be changed based on difficulty, don't make it final yet
+    private final int ALIEN_INTERVAL = 2;
+    private double alienShootChance = 0.5;
 
     public BulletSpawner(long intervalInMs, Spaceship spaceship, AlienManager alienManager) {
         super(intervalInMs);
@@ -44,8 +50,6 @@ public class BulletSpawner extends EntitySpawner {
     }
 
     // Spawns a bullet under the CompositeEntity AlienManager
-    // TODO
-    //  1.1 CompositeEntity doesn't seem to rescale vertically, bullets shoot too low compared to aliens.
     private void spawnBulletFromAlienIfNeeded() {
         if (alienBulletSpawnCounter == ALIEN_INTERVAL) {
             double rolledNum = random.nextDouble();

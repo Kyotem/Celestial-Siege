@@ -7,13 +7,12 @@ import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 
-// TODO
-//  Adjust alienSpeed & MOVEMENT_STEP based on in-game balance
-//  Change speed based on how many aliens are left
-//  Add respawn mechanism
+/*
+    If leftmost row of aliens is completely destroyed, it shifts the bounding boxes with STEP_SIZE to the right.
+    (Same happens with the top row being destroyed and them moving down by STEP_SIZE)
+    Unsure what causes this, likely related to initialisation and the usage of offsets.
+ */
 
-// FIXME
-//  Resolve issue where if aliens from the leftmost row pushes the boundingboxes to the right by STEP_SIZE
 
 public class AlienManager extends DynamicCompositeEntity implements SceneBorderTouchingWatcher {
 
@@ -43,12 +42,12 @@ public class AlienManager extends DynamicCompositeEntity implements SceneBorderT
 
     }
 
-    // Get X-pos of the CompositeEntity itself
+    // Get X-pos of the CompositeEntity (AlienManager) itself
     public double getXPosition() {
         return getAnchorLocation().getX();
     }
 
-    // Get Y-pos of the CompositeEntity itself
+    // Get Y-pos of the CompositeEntity (AlienManager) itself
     public double getYPosition() {
         return getAnchorLocation().getY();
     }

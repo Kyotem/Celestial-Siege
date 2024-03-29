@@ -31,7 +31,7 @@ public class Alien extends DynamicSpriteEntity implements Collided, Collider {
         alienHP--;
     }
 
-    // Removes the entity (Alien) from the AlienManager's list & the currently active scene
+    // Removes the entity (Alien) from the currently active scene
     private void destroy() {
         remove();
     }
