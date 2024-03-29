@@ -2,7 +2,6 @@ package CelestialSiege.UI.buttons;
 
 import CelestialSiege.scenes.GameScene;
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import javafx.scene.input.MouseButton;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -14,8 +13,8 @@ import javafx.scene.text.FontWeight;
     Example of the issue: Ship shoots laser... Game paused... 1000ms (or more) pass... Game unpaused... 2 lasers fired in proximity.
 */
 
-public class PauseButton extends Button implements MouseButtonPressedListener {
-    private final GameScene gameScene;
+public class PauseButton extends Button {
+    private final GameScene GAMESCENE;
 
     private boolean isGamePaused = false;
     private final int BUTTON_SIZE = 50;
@@ -24,33 +23,23 @@ public class PauseButton extends Button implements MouseButtonPressedListener {
         super(initialLocation, "Test");
         setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, BUTTON_SIZE));
         setText("Pause");
-        this.gameScene = gameScene;
+        this.GAMESCENE = gameScene;
     }
 
     // Method called when button is pressed -> toggles pause state & buttontext
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-//        updateButtonText(); Disabled due to overlap issues, re-enable when fixed
         toggleGameState();
     }
 
     // Toggle the game state between paused and resumed
     private void toggleGameState() {
         if (!isGamePaused) {
-            gameScene.pause();
+            GAMESCENE.pause();
             isGamePaused = true;
         } else {
-            gameScene.resume();
+            GAMESCENE.resume();
             isGamePaused = false;
-        }
-    }
-
-    // Update the button text based on the current game state
-    private void updateButtonText() {
-        if (gameScene.isActiveGWU()) {
-            setText("Resume");
-        } else {
-            setText("Pause");
         }
     }
 }

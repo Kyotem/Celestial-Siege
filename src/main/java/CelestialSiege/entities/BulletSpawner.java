@@ -5,24 +5,29 @@ import com.github.hanyaeger.api.entities.EntitySpawner;
 
 import java.util.Random;
 
+/*
+    CompositeEntity (AlienManager) does not update it's dimensions vertically.
+    If bottom row of aliens is destroyed, the Y-Pos that bullets are spawned remain the same as in the start.
+    Not aware of a direct fix ATM
+ */
+
 public class BulletSpawner extends EntitySpawner {
 
-    // TODO Resolve height spawn issue when spawning bullets under aliens (CompositEntity doesn't seem to rescale, see 1.1 @ spawnBulletFromAlienIfNeeded() )
-    private final Spaceship spaceship;
-    private final AlienManager alienManager;
-    private final Random random;
+    private final Spaceship SPACESHIP;
+    private final AlienManager ALIENMANAGER;
+    private final Random RANDOM;
     private int alienBulletSpawnCounter = 1; // Used to determine @ which interval the aliens should be able to shoot a bullet
 
     private final int SPACESHIP_OFFSET = 60;
     private final int ALIEN_OFFSET = 30;
-    private final int ALIEN_INTERVAL = 2; // TODO Rename
-    private double alienShootChance = 0.5; // Might be changed based on difficulty, don't make it final yet
+    private final int ALIEN_INTERVAL = 2;
+    private double alienShootChance = 0.5;
 
     public BulletSpawner(long intervalInMs, Spaceship spaceship, AlienManager alienManager) {
         super(intervalInMs);
-        this.spaceship = spaceship;
-        this.alienManager = alienManager;
-        this.random = new Random();
+        this.SPACESHIP = spaceship;
+        this.ALIENMANAGER = alienManager;
+        this.RANDOM = new Random();
     }
 
     @Override
@@ -35,8 +40,8 @@ public class BulletSpawner extends EntitySpawner {
     private void spawnBulletAboveSpaceship() {
         Bullet bullet = new Bullet(
                 new Coordinate2D(
-                        spaceship.getAnchorLocation().getX(),
-                        spaceship.getAnchorLocation().getY() - SPACESHIP_OFFSET),
+                        SPACESHIP.getAnchorLocation().getX(),
+                        SPACESHIP.getAnchorLocation().getY() - SPACESHIP_OFFSET),
                 2,
                 180
         );
@@ -44,18 +49,16 @@ public class BulletSpawner extends EntitySpawner {
     }
 
     // Spawns a bullet under the CompositeEntity AlienManager
-    // TODO
-    //  1.1 CompositeEntity doesn't seem to rescale vertically, bullets shoot too low compared to aliens.
     private void spawnBulletFromAlienIfNeeded() {
         if (alienBulletSpawnCounter == ALIEN_INTERVAL) {
-            double rolledNum = random.nextDouble();
+            double rolledNum = RANDOM.nextDouble();
             if (rolledNum < alienShootChance) {
-                double randomPos = alienManager.getXPosition() + random.nextDouble() * (700 - alienManager.getXPosition());
+                double randomPos = ALIENMANAGER.getXPosition() + RANDOM.nextDouble() * (700 - ALIENMANAGER.getXPosition());
                 Bullet bullet = new Bullet(
                         new Coordinate2D(
-                                randomPos, // TODO Fix this hack calculation
+                                randomPos,
                                 // Random x-coordinate between alienManager.getXPosition() and 700 (Sceneborder)
-                                alienManager.getYPosition() + ALIEN_OFFSET),
+                                ALIENMANAGER.getYPosition() + ALIEN_OFFSET),
                         2,
                         0
                 );

@@ -17,6 +17,4 @@ public class CustomTextEntity extends TextEntity {
         setFill(color);
         setText(text);
     }
-
-
 }

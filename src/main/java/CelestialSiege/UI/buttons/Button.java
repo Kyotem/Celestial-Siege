@@ -11,13 +11,10 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.FontWeight;
 
-// TODO can Button be changed to use CustomTextEntity?
-
 public abstract class Button extends CustomTextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
 
     private final Color PRIMARY_COLOR = Color.YELLOW;
     private final Color SECONDARY_COLOR = Color.VIOLET;
-    private final int BUTTON_SIZE = 45;
 
     public Button(Coordinate2D initialLocation, String label) {
         super(initialLocation, label, AnchorPoint.CENTER_CENTER, "Roboto", FontWeight.BOLD, 45, Color.YELLOW);

@@ -24,8 +24,8 @@ public class UIGameScene extends UIComponent {
         createButtonEntities();
     }
 
-    // TODO Fix hardcoded position values, create common constants
-    // FIXME Fix overlapping issues with update-able UI Elements
+    // Updating the text later on will result in it overlapping with the initialised text.
+    // Though if you don't initialise with text and just update, it does not overlap with each other... somehow.
     @Override
     protected void createTextEntities() {
         healthText = new CustomTextEntity(new Coordinate2D(20, 610),
@@ -36,7 +36,6 @@ public class UIGameScene extends UIComponent {
         );
         addEntity(healthText);
         addEntity(scoreText);
-
     }
 
     @Override
