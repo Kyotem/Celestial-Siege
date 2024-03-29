@@ -2,7 +2,6 @@ package CelestialSiege.UI.buttons;
 
 import CelestialSiege.scenes.GameScene;
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import javafx.scene.input.MouseButton;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;

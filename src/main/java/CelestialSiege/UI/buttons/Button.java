@@ -15,7 +15,6 @@ public abstract class Button extends CustomTextEntity implements MouseButtonPres
 
     private final Color PRIMARY_COLOR = Color.YELLOW;
     private final Color SECONDARY_COLOR = Color.VIOLET;
-    private final int BUTTON_SIZE = 45;
 
     public Button(Coordinate2D initialLocation, String label) {
         super(initialLocation, label, AnchorPoint.CENTER_CENTER, "Roboto", FontWeight.BOLD, 45, Color.YELLOW);
