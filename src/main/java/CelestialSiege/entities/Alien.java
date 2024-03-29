@@ -20,8 +20,6 @@ public class Alien extends DynamicSpriteEntity implements Collided, Collider {
     private int alienHP;
     private int scorePoints = 0;
 
-    // Will change based on speed of main Alienclass TODO edit this later
-
     public Alien(String sprite, Coordinate2D initialLocation, int alienHP, AlienManager alienManager) {
         super(sprite, initialLocation, new Size(40, 40));
         this.alienHP = alienHP;

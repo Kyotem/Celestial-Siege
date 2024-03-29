@@ -8,7 +8,6 @@ public class ShieldTileMap extends TileMap {
         addEntity(1, Shield.class, "sprites/Shield.png");
         addEntity(2, Shield.class, "sprites/Shield.png");
         addEntity(3, Shield.class, "sprites/Shield.png");
-
     }
 
     @Override
@@ -28,7 +27,6 @@ public class ShieldTileMap extends TileMap {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-
         };
     }
 }
