@@ -8,9 +8,6 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
 import java.util.List;
 
-// TODO
-//  Parse Score through to Scoreborad class
-//  add loss condition (aliens pass certain y point)
 
 public class Alien extends DynamicSpriteEntity implements Collided, Collider {
 

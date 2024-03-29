@@ -13,7 +13,6 @@ import java.util.Random;
 
 public class BulletSpawner extends EntitySpawner {
 
-    // TODO Resolve height spawn issue when spawning bullets under aliens (CompositEntity doesn't seem to rescale, see 1.1 @ spawnBulletFromAlienIfNeeded() )
     private final Spaceship SPACESHIP;
     private final AlienManager ALIENMANAGER;
     private final Random RANDOM;
@@ -57,7 +56,7 @@ public class BulletSpawner extends EntitySpawner {
                 double randomPos = ALIENMANAGER.getXPosition() + RANDOM.nextDouble() * (700 - ALIENMANAGER.getXPosition());
                 Bullet bullet = new Bullet(
                         new Coordinate2D(
-                                randomPos, // TODO Fix this hack calculation
+                                randomPos,
                                 // Random x-coordinate between alienManager.getXPosition() and 700 (Sceneborder)
                                 ALIENMANAGER.getYPosition() + ALIEN_OFFSET),
                         2,
